@@ -4,6 +4,7 @@ gc()
 # Set the working directory
 setwd("/rootpath/to/your/project")
 
+
 # ==============================================================================
 # Duration-independent leaf scaling: T.I.-corrected longest-leaf residuals
 #
@@ -22,7 +23,6 @@ setwd("/rootpath/to/your/project")
 
 library(tidyverse)   # dplyr, tidyr, ggplot2, purrr, tibble, stringr
 library(fdapace)     # FPCA
-library(readxl)      # read_xlsx (genotype name fixes)
 
 # ---- Paths ----
 dat_dir   <- paste0(getwd(), "/data/")
@@ -32,16 +32,9 @@ timestamp <- format(Sys.time(), "%d%m%Y")
 # ==============================================================================
 # 1. Read data & harmonise genotype names
 # ==============================================================================
-name_fixes <- read_xlsx(paste0(dat_dir, "pg_unmatched_gtypes_in_ptypes.xlsx")) %>%
-  dplyr::mutate(sample_ptype = tolower(sample_ptype))
 
-my_dat1 <- read.csv(paste0(dat_dir, "05_dat_field_canopy.csv")) %>%
-  dplyr::rename(genotype = variety_id_n) %>%
-  dplyr::mutate(genotype = tolower(genotype)) %>%
-  dplyr::left_join(name_fixes, by = c("genotype" = "sample_ptype")) %>%
-  dplyr::mutate(genotype = dplyr::coalesce(sample_gtype, genotype)) %>%
-  dplyr::select(-sample_gtype) %>%
-  dplyr::filter(genotype != "NA")
+#canopy dimensions from the field
+my_dat1<-read.csv(paste0(dat_dir, "04_dat_field_canopy_rvn.csv"))
 
 # ==============================================================================
 # 2. FPCA workflow (reconstruct blade-length profiles)
@@ -250,8 +243,8 @@ resid_table <- dplyr::bind_rows(
   ) %>%
   dplyr::arrange(genotype, origin)
 
-write.table(resid_table, paste0(dat_dir, "06_dat_gwas_scaling_residvar.txt"),
-            sep = "\t", row.names = FALSE, quote = FALSE)
+#write.table(resid_table, paste0(dat_dir, "06_dat_gwas_scaling_residvar.txt"),
+#            sep = "\t", row.names = FALSE, quote = FALSE)
 
 # 5b. Per-plant residuals (subject = plot_plant_env, e.g. "100_1_2")
 plant_resid_table <- plant_resid %>%
@@ -271,9 +264,9 @@ plant_resid_table <- plant_resid %>%
   ) %>%
   dplyr::arrange(genotype, origin, plot, plant)
 
-write.table(plant_resid_table,
-            paste0(dat_dir, "06_dat_gwas_scaling_residvar_perplant.txt"),
-            sep = "\t", row.names = FALSE, quote = FALSE)
+#write.table(plant_resid_table,
+#            paste0(dat_dir, "06_dat_gwas_scaling_residvar_perplant.txt"),
+#            sep = "\t", row.names = FALSE, quote = FALSE)
 
 # ==============================================================================
 # 6. Variation summary: spread before vs after T.I. correction, per env
@@ -369,6 +362,7 @@ base_sz   <- 10
 lim       <- max(abs(c(resid_wide$France, resid_wide$Mexico)), na.rm = TRUE) * 1.10
 lab_inset <- lim * 0.97   # corner-label placement, just inside the panel
 
+#plot it
 scaler_scatter <- ggplot(resid_wide, aes(France, Mexico)) +
   # consistent-quadrant shading (diagonal corners)
   annotate("rect", xmin = 0,    xmax = Inf, ymin = 0,    ymax = Inf, fill = hyper_col, alpha = 0.07) +
@@ -412,8 +406,12 @@ scaler_scatter <- ggplot(resid_wide, aes(France, Mexico)) +
     axis.title.y       = element_text(size = base_sz + 2, margin = margin(r = 10)),
     plot.margin        = margin(10, 10, 10, 10)
   )
+
+#print it 
 scaler_scatter
 
+
+#save it
 ggsave(paste0(fig_dir, "Fig6_", timestamp, ".pdf"),
        scaler_scatter, width = 5, height = 5.4, dpi = 300)
 

@@ -11,15 +11,11 @@ setwd("/rootpath/to/your/project")
 #   Pipeline:
 #     1. FPCA (fdapace) is run on per-plant blade-length curves under four
 #        registration systems — absolute leaf rank, T.I.-relative rank,
-#        ear-relative rank, and total-leaf-number normalised rank — for both
-#        platform (pot) and field (un_num) experiments.
-#     2. FPC scores are extracted per plant, averaged to genotype × environment,
-#        and exported alongside T.I. as a phenotype file for heritability and
-#        GWAS analyses.
-#     3. Residual fit quality is benchmarked across registration systems via
+#        ear-relative rank, and total-leaf-number normalised rank — for field (un_num) experiments.
+#     2. Residual fit quality is benchmarked across registration systems via
 #        total absolute residuals per plant and residual-by-time smooths,
 #        enabling selection of the best-aligning time axis.
-#     4. Covariance and correlation matrices are extracted per system;
+#     3. Covariance and correlation matrices are extracted per system;
 #        off-diagonal correlations are summarised as mean correlation vs. lag
 #        distance to characterise smoothness of the functional signal under
 #        each registration.
@@ -46,9 +42,6 @@ library(ggridges)# plots
 library(fdapace) #fda analysis
 library(gtable)# Calculate approximate space needed:
 library(grid)# Calculate approximate space needed:
-# Calculate approximate space needed:
-library(gtable)
-library(grid)
 library(ggnewscale)
 
 # ---- Paths ----
@@ -59,69 +52,11 @@ timestamp <- format(Sys.time(), "%d%m%Y")
 # ==============================================================================
 # 1. Read and summarize data 
 # ==============================================================================
-
-#canopy dimensions from the platform
-my_dat0 <- read.csv(paste0(dat_dir,"04_dat_platform_canopy.csv")) %>%
-  dplyr::mutate(t_i = (tot_leaf-6.5)/1.51) %>%
-  dplyr::mutate(pot=as.factor(pot))%>%
-  dplyr::group_by(pot)%>%
-  dplyr::mutate(rel_t = -(t_i-Leaf),
-                rel_e = -(earleaf-Leaf),
-                rel_n = Leaf/tot_leaf)%>%
-  dplyr::rename(Length=llength)
   
 
 #canopy dimensions from the field
-name_fixes <- read_xlsx(paste0(dat_dir, "pg_unmatched_gtypes_in_ptypes.xlsx")) %>%
-  dplyr::mutate(sample_ptype = tolower(sample_ptype))
+my_dat1<-read.csv(paste0(dat_dir, "04_dat_field_canopy_rvn.csv"))
 
-  my_dat1 <- read.csv(paste0(dat_dir, "05_dat_field_canopy.csv")) %>%
-  dplyr::rename(genotype = variety_id_n) %>%
-  dplyr::mutate(genotype = tolower(genotype)) %>%
-  dplyr::left_join(name_fixes, by = c("genotype" = "sample_ptype")) %>%
-  dplyr::mutate(genotype = dplyr::coalesce(sample_gtype, genotype)) %>%
-  dplyr::select(-sample_gtype) %>%
-  dplyr::filter(genotype != "NA")
-
-
-# #quick check
-#  sfd<-my_dat1%>%
-#   dplyr::filter(!is.na(Length))%>%
-#    droplevels()%>%
-#    #dplyr::group_by(un_num)%>%
-#    #dplyr::select(un_num)%>%
-#    #distinct()
-# #  group_by(un_num)%>%
-# #   tally()
-#   dplyr::group_by(origin)%>%
-#   dplyr::select(genotype)%>%
-#   distinct()%>%
-#   count()
-#  
-#  sfd <- my_dat1 %>%
-#    dplyr::filter(!is.na(Length)) %>%
-#    droplevels() %>%
-#    dplyr::distinct(genotype, origin)   # equivalent to your version, written explicitly
-#  
-#  # how many origins (environments) each genotype shows up in, and which ones
-#  shared_tab <- sfd %>%
-#    dplyr::group_by(genotype) %>%
-#    dplyr::summarise(
-#      n_origin = dplyr::n_distinct(origin),
-#      origins  = paste(sort(unique(origin)), collapse = ", "),
-#      .groups  = "drop"
-#    ) %>%
-#    dplyr::arrange(desc(n_origin))
-#  
-#  # genotypes present in every environment
-#  n_origin_total <- dplyr::n_distinct(sfd$origin)
-#  genotypes_in_all <- shared_tab %>%
-#    dplyr::filter(n_origin == n_origin_total) %>%
-#    dplyr::pull(genotype)
-#  
-#  length(genotypes_in_all)   # how many are shared across all environments
-# 
-# 
 
 # ==============================================================================
 # 2. PACE analysis (platform and field)
@@ -176,11 +111,6 @@ run_fpca <- function(df, group_var, time_var, trait_col, ti_col) {
   
 }
 
-# Platform data (blade)
-pe_b_l <- run_fpca(my_dat0, group_var = "pot", time_var = "Leaf", trait_col = "Length", ti_col = "t_i")
-pe_b_t <- run_fpca(my_dat0, group_var = "pot", time_var = "rel_t", trait_col = "Length", ti_col = "t_i")
-pe_b_e <- run_fpca(my_dat0, group_var = "pot", time_var = "rel_e", trait_col = "Length", ti_col = "t_i")        
-pe_b_n <- run_fpca(my_dat0, group_var = "pot", time_var = "rel_n", trait_col = "Length", ti_col = "t_i")     
 
 # Field data (blade)
 fe_b_l <- run_fpca(my_dat1, group_var = "un_num", time_var = "Leaf", trait_col = "Length", ti_col = "t_i")   
@@ -191,21 +121,6 @@ fe_b_n <- run_fpca(my_dat1, group_var = "un_num", time_var = "rel_n", trait_col 
 # ==============================================================================
 # 3a. Extract results
 # ==============================================================================
-
-# Output from Field Exp. for Heritability and GWAS analyses
-# Create a function to process FPCA results
-# process_fpca_results <- function(fpca_obj, obj_name, trait_name, join_data, join_by, group_by_vars) {
-#   tibble(
-#     trait_name = trait_name,  # Add trait name column
-#     !!attr(fpca_obj, "group_var") := attr(fpca_obj, "group_ids"),
-#     fpca_source = obj_name  # Add identifier column
-#   ) %>%
-#     bind_cols(as.data.frame(fpca_obj$xiEst) %>%
-#                 setNames(paste0("fpc", seq_len(ncol(.))))) %>%
-#     left_join(join_data, by = attr(fpca_obj, "group_var")) %>%
-#     group_by(across(all_of(c("trait_name", "fpca_source", group_by_vars)))) %>%
-#     summarise(across(starts_with("fpc"), ~ mean(.x, na.rm = TRUE)), .groups = "drop")
-# }
 
 process_fpca_results <- function(fpca_obj, obj_name, trait_name,
                                  join_data, join_by, group_by_vars) {
@@ -243,29 +158,25 @@ process_fpca_results <- function(fpca_obj, obj_name, trait_name,
 
 # Prepare join data
 field_join_data <- my_dat1 %>% 
-  dplyr::select(origin, un_num, range, row, block, variety_id_n) %>% 
+  dplyr::select(origin, un_num, range, row, block, genotype) %>% 
   distinct_all()
 
 # Process all field FPCA results
 field_results <- bind_rows(
-  process_fpca_results(fe_b_l, "fe_b_l", "blade_length", field_join_data, "un_num", c("origin", "variety_id_n")),
-  process_fpca_results(fe_b_t, "fe_b_t", "blade_length", field_join_data, "un_num", c("origin", "variety_id_n")),
-  process_fpca_results(fe_b_e, "fe_b_e", "blade_length", field_join_data, "un_num", c("origin", "variety_id_n")),
-  process_fpca_results(fe_b_n, "fe_b_n", "blade_length", field_join_data, "un_num", c("origin", "variety_id_n"))
+  process_fpca_results(fe_b_l, "fe_b_l", "blade_length", field_join_data, "un_num", c("origin", "genotype")),
+  process_fpca_results(fe_b_t, "fe_b_t", "blade_length", field_join_data, "un_num", c("origin", "genotype")),
+  process_fpca_results(fe_b_e, "fe_b_e", "blade_length", field_join_data, "un_num", c("origin", "genotype")),
+  process_fpca_results(fe_b_n, "fe_b_n", "blade_length", field_join_data, "un_num", c("origin", "genotype"))
 )
 
 # Convert to long format
 field_results_long <- field_results %>%
   pivot_longer(
-    cols = -c(trait_name, fpca_source, origin, variety_id_n, n_plants, t_i),  # Pivot everything EXCEPT these
+    cols = -c(trait_name, fpca_source, origin, genotype, n_plants, t_i),  # Pivot everything EXCEPT these
     names_to = "trait", 
     values_to = "value"
   )
 
-# Save outputs
-# write.csv(field_results_long, 
-#           "~/Dropbox-SE Dropbox/Randall Wisser/inrae_kj/Paper/dev_cardPoints/Draft/v7/data/05_dat_field_blade_fpc.csv",
-#           row.names = FALSE)
 
 
 # Function to extract variances (diagonal) and covariances (upper triangle)
@@ -493,75 +404,6 @@ compare_fpca_systems <- function(df,
 }
 
 
-
-
-# ==============================================================================
-# 3c. Platform Exp. -- Extract results
-# ==============================================================================
-
-# coords
-pe_l_coords <- pe_b_l$workGrid
-pe_t_coords <- pe_b_t$workGrid
-pe_e_coords <- pe_b_e$workGrid
-pe_n_coords <- pe_b_n$workGrid
-
-# splines
-pe_mu_l <- data.frame(coords = pe_l_coords, mu = pe_b_l$mu)  
-pe_mu_t <- data.frame(coords = pe_t_coords, mu = pe_b_t$mu)
-pe_mu_e <- data.frame(coords = pe_e_coords, mu = pe_b_e$mu)  
-pe_mu_n <- data.frame(coords = pe_n_coords, mu = pe_b_n$mu)
-
-# covariance
-pe_mat_l_cov <- pe_b_l$fittedCov
-pe_mat_t_cov <- pe_b_t$fittedCov       
-pe_mat_e_cov <- pe_b_e$fittedCov   
-pe_mat_n_cov <- pe_b_n$fittedCov  
-
-# correlation
-pe_mat_l_cor <- cov2cor(as.matrix(pe_mat_l_cov))
-pe_mat_t_cor <- cov2cor(as.matrix(pe_mat_t_cov))
-pe_mat_e_cor <- cov2cor(as.matrix(pe_mat_e_cov))
-pe_mat_n_cor <- cov2cor(as.matrix(pe_mat_n_cov))
-
-# Process covariance matrices
-pe_combined_cov <- process_matrices(
-  mat_list = list(pe_mat_l_cov, pe_mat_t_cov, pe_mat_e_cov, pe_mat_n_cov),
-  coord_list = list(pe_l_coords, pe_t_coords, pe_e_coords, pe_n_coords),
-  mat_names = c("Abs. Rank", "Rel. T.I.", "Rel. Ear Rank", "Leaf No. Norm."),
-)
-
-# Process correlation matrices with distinct type labels
-pe_combined_cor <- process_matrices(
-  mat_list = list(pe_mat_l_cor, pe_mat_t_cor, pe_mat_e_cor, pe_mat_n_cor),
-  coord_list = list(pe_l_coords, pe_t_coords, pe_e_coords, pe_n_coords),
-  mat_names = c("Abs. Rank", "Rel. T.I.", "Rel. Ear Rank", "Leaf No. Norm."),
-  type_label = NULL  # Don't override the type, keep "Variance" and "Covariance"
-) %>%
-  mutate(type = case_when(
-    type == "Variance" ~ "Cor_diag",
-    type == "Covariance" ~ "Cor_offdiag",
-    TRUE ~ type
-  )) %>%
-  group_by(matrix) %>%
-  mutate(
-    # Create index position for each coordinate
-    row_idx = match(row_coord, sort(unique(c(row_coord, col_coord)))),
-    col_idx = match(col_coord, sort(unique(c(row_coord, col_coord))))
-  ) %>%
-  ungroup()
-
-#residual###############################
-pe_comparison <- compare_fpca_systems(
-  df        = my_dat0,
-  group_var = "pot",
-  time_vars = c(abs_rnk = "Leaf", rel_ti = "rel_t", rel_e = "rel_e", rel_n = "rel_n"),
-  trait_col = "Length"
-)
-# access directly — no intermediate steps needed
-#comparison$error_total  # feeds p_error_box
-#comparison$resid_time   # feeds p_resid_smooth
-
-
 # ==============================================================================
 # 3d. Field Exp. -- Extract results
 # ==============================================================================
@@ -633,742 +475,6 @@ resid_time<-fe_comparison$resid_time%>%
 
 # ==============================================================================
 # 4. Plots 
-# ==============================================================================
-
-# ==============================================================================
-# Platform Exp. (pe)
-# ==============================================================================
-
-pe_leaf_sequence <- my_dat0 %>%
-  group_by(pot) %>%
-  reframe(Leaf = 1:max(Leaf, na.rm = TRUE))
-
-pe_rect_data <- pe_leaf_sequence %>%
-  left_join(my_dat0, by = c("pot", "Leaf")) %>%
-  group_by(pot) %>%
-  mutate(
-    ti_floor = as.integer(floor(t_i)),
-    rel_t = -(ti_floor - Leaf),
-    first_val = first(na.omit(rel_t)),
-    first_pos = which(!is.na(rel_t))[1],
-    rel_t = first_val + (row_number() - first_pos),
-    rel_e = na.approx(rel_e, na.rm = FALSE, rule = 2),
-    rel_n = na.approx(rel_n, na.rm = FALSE, rule = 2),
-    maxlr = max(t_i, na.rm = TRUE),
-    minlr = min(t_i, na.rm = TRUE)
-  ) %>%
-  slice_min(abs(rel_t), n = 1, with_ties = FALSE) %>%
-  ungroup() %>%
-  summarize(
-    t_min_l = min(minlr, na.rm = TRUE),
-    t_max_l = max(maxlr, na.rm = TRUE),
-    t_min_t = -0.5, # min(rel_t, na.rm = TRUE),
-    t_max_t = 0.5,  # max(rel_t, na.rm = TRUE),
-    t_min_e = min(rel_e, na.rm = TRUE),
-    t_max_e = max(rel_e, na.rm = TRUE),
-    t_min_n = min(rel_n, na.rm = TRUE),
-    t_max_n = max(rel_n, na.rm = TRUE)
-  ) %>%
-  {data.frame(
-    matrix = c("Abs. Rank", "Rel. T.I.", "Rel. Ear Rank", "Leaf No. Norm."),
-    xmin = c(.$t_min_l, .$t_min_t, .$t_min_e, .$t_min_n),
-    xmax = c(.$t_max_l, .$t_max_t, .$t_max_e, .$t_max_n)
-  )} %>%
-  mutate(
-    ymin = xmin,
-    ymax = xmax,
-    matrix = factor(matrix, levels = matrix)
-  )
-
-# Step 1: build per-pot values, same logic as before, but kept long instead of summarized
-pe_density_long <- pe_leaf_sequence %>%
-  left_join(my_dat0, by = c("pot", "Leaf")) %>%
-  group_by(pot) %>%
-  mutate(
-    ti_floor = as.integer(floor(t_i)),
-    rel_t = -(ti_floor - Leaf),
-    first_val = first(na.omit(rel_t)),
-    first_pos = which(!is.na(rel_t))[1],
-    rel_t = first_val + (row_number() - first_pos),
-    rel_e = na.approx(rel_e, na.rm = FALSE, rule = 2),
-    rel_n = na.approx(rel_n, na.rm = FALSE, rule = 2),
-    maxlr = max(t_i, na.rm = TRUE),
-    minlr = min(t_i, na.rm = TRUE)
-  ) %>%
-  slice_min(abs(rel_t), n = 1, with_ties = FALSE) %>%
-  ungroup() %>%
-  pivot_longer(
-    cols = c(minlr, maxlr, rel_t, rel_e, rel_n),
-    names_to = "var_key",
-    values_to = "value"
-  ) %>%
-  mutate(
-    matrix = case_when(
-      var_key %in% c("minlr", "maxlr") ~ "Abs. Rank",
-      var_key == "rel_t"               ~ "Rel. T.I.",
-      var_key == "rel_e"               ~ "Rel. Ear Rank",
-      var_key == "rel_n"               ~ "Leaf No. Norm."
-    ),
-    matrix = factor(matrix, levels = c("Abs. Rank", "Rel. T.I.", "Rel. Ear Rank", "Leaf No. Norm."))
-  ) %>%
-  filter(is.finite(value))
-
-# Step 2: density per matrix category, same as rect_grad_ear
-rect_grad_pe <- pe_density_long %>%
-  group_by(matrix) %>%
-  group_modify(~ {
-    if (nrow(.x) < 2) {
-      return(data.frame(xmin = numeric(0), xmax = numeric(0),
-                        fill = numeric(0), x = numeric(0), dens = numeric(0)))
-    }
-    d <- density(.x$value)
-    data.frame(
-      xmin = head(d$x, -1),
-      xmax = tail(d$x, -1),
-      fill = head(d$y, -1),
-      x    = head(d$x, -1),
-      dens = head(d$y, -1)
-    )
-  }) %>%
-  group_by(matrix) %>%
-  mutate(
-    fill_norm = fill / max(fill, na.rm = TRUE),
-    dens_norm = dens / max(dens, na.rm = TRUE)
-  ) %>%
-  ungroup()
-
-# Step 3: scale dens line to a fraction of each panel's y-range
-ylims_pe <- c(`Abs. Rank` = NA, `Rel. T.I.` = NA, `Rel. Ear Rank` = NA, `Leaf No. Norm.` = NA)  # fill in real limits
-
-rect_grad_pe <- rect_grad_pe %>%
-  mutate(dens_scaled = dens_norm * 0.15 * ylims_pe[as.character(matrix)])
-
-
-# ==============================================================================
-# 4a. Platform Exp. (pe) - Mean curves
-# ==============================================================================
-# Combine all data frames with a grouping variable
-pe_mu_combined <- bind_rows(
-  pe_mu_l %>% mutate(matrix = "Abs. Rank"),
-  pe_mu_t %>% mutate(matrix = "Rel. T.I."),
-  pe_mu_e %>% mutate(matrix = "Rel. Ear Rank"),
-  pe_mu_n %>% mutate(matrix = "Leaf No. Norm.")
-)
-
-pe_mu_combined <- pe_mu_combined %>%
-  mutate(matrix = factor(matrix, levels = c("Abs. Rank", "Rel. T.I.", "Rel. Ear Rank", "Leaf No. Norm.")))
-
-# Create custom x-scales for each facet
-x_scales_mu <- pe_mu_combined %>%
-  distinct(matrix, coords) %>%
-  arrange(matrix, coords) %>%
-  split(.$matrix) %>%
-  lapply(function(df) {
-    
-    m <- unique(df$matrix)
-    
-    coord_limits <- c(min(df$coords), max(df$coords))
-    
-    if (m %in% c("Abs. Rank", "Rel. T.I.", "Rel. Ear Rank")) {
-      # Grid lines at whole numbers
-      coord_grid <- seq(ceiling(coord_limits[1]), floor(coord_limits[2]), by = 1)
-      # Labels only at min and max
-      coord_label_at <- coord_limits
-      coord_labels <- round(coord_limits, 0)
-      
-    } else if (m == "Leaf No. Norm.") {
-      # Grid lines at 0.1 intervals
-      coord_grid <- seq(ceiling(coord_limits[1] * 10) / 10, 
-                        floor(coord_limits[2] * 10) / 10, 
-                        by = 0.1)
-      # Labels only at min and max
-      coord_label_at <- coord_limits
-      coord_labels <- round(coord_limits, 1)
-      
-    } else {
-      coord_grid <- pretty(coord_limits, n = 5)
-      coord_label_at <- coord_limits
-      coord_labels <- round(coord_limits, 1)
-    }
-    
-    scale_x_continuous(
-      breaks = coord_label_at,      # Only show labels at min/max
-      labels = coord_labels,
-      limits = coord_limits,
-      minor_breaks = coord_grid,    # Grid lines at whole numbers or 0.1
-      expand = expansion(mult = c(0.1, 0.1))
-    )
-  })
-
-# Create faceted plot
-p_pe_mu <- ggplot(pe_mu_combined, aes(x = coords, y = mu, color = matrix)) +
-  # shading before lines
-  geom_rect(data = rect_grad_fe,
-            aes(xmin = xmin, xmax = xmax, ymin = -Inf, ymax = Inf, fill = fill_norm),
-            inherit.aes = FALSE) +
-  scale_fill_gradient(low = alpha("grey85", 0.2), high = alpha("grey50", 0.7), guide = "none") +
-  
-  geom_line(linewidth = 1.2) +
-  ggh4x::facet_wrap2(~ matrix, scales = "free_x", ncol = 4, axes = "all") +
-  ggh4x::facetted_pos_scales(
-    x = x_scales_mu
-  ) +
-  scale_color_manual(values = c(
-    "Abs. Rank"      = "#0072B2",
-    "Rel. Ear Rank"  = "#D55E00",
-    "Rel. T.I."      = "#009E73",
-    "Leaf No. Norm." = "#CC79A7"
-  )) +
-  labs(title = "A", x = "Registration coordinates", y = "Blade length\n(cm)") +
-  scale_y_continuous(limits = c(20, 105),
-                     breaks = function(lim) seq(0, 100, 20)) +
-  theme_bw() +
-  theme(
-    aspect.ratio = 1,
-    legend.position = "none",
-    plot.title = element_text(hjust = 0, size = 15, face = "bold"),
-    axis.text.x = element_text(size = 12, angle = 90, vjust = 0.5, hjust = 1),
-    axis.text.y = element_text(size = 12, hjust = 1),
-    axis.title = element_text(size = 14),
-    axis.title.x = element_text(size = 14, margin = margin(t = 10)),
-    axis.title.y = element_text(size = 14, margin = margin(r = 10)),
-    panel.grid.major.x = element_blank(),  # Turn off major grid
-    panel.grid.minor.x = element_line(linewidth = 0.3, colour = "grey90"),  # Use minor for custom grid
-    panel.grid.major.y = element_line(linewidth = 0.3, colour = "grey90"),
-    panel.grid.minor.y = element_blank(),
-    strip.text = element_text(),
-    panel.spacing = unit(1, "lines")
-  )
-p_pe_mu
-
-# ==============================================================================
-# 4b. Platform Exp. (pe) - Correlation matrices (heat map)
-# ==============================================================================
-# Convert long format to heatmap format
-# For upper triangle + diagonal, we need to create the full matrix visualization
-pe_heatmap_data <- pe_combined_cor %>%
-  mutate(matrix = factor(matrix, levels = c("Abs. Rank", "Rel. T.I.", "Rel. Ear Rank", "Leaf No. Norm.")))
-
-# Rename columns for the plot
-pe_heatmap_data <- pe_heatmap_data %>%
-  rename(row = row_coord, col = col_coord)
-
-# Create custom x-scales for each facet
-x_scales_cor <- pe_heatmap_data %>%
-  distinct(matrix, col) %>%
-  arrange(matrix, col) %>%
-  split(.$matrix) %>%
-  lapply(function(df) {
-    
-    m <- unique(df$matrix)
-    
-    coord_limits <- c(min(df$col), max(df$col))
-    
-    if (m %in% c("Abs. Rank", "Rel. T.I.", "Rel. Ear Rank")) {
-      # Grid lines at whole numbers
-      coord_grid <- seq(ceiling(coord_limits[1]), floor(coord_limits[2]), by = 1)
-      # Labels only at min and max
-      coord_label_at <- coord_limits
-      coord_labels <- round(coord_limits, 0)
-      
-    } else if (m == "Leaf No. Norm.") {
-      # Grid lines at 0.1 intervals
-      coord_grid <- seq(ceiling(coord_limits[1] * 10) / 10, 
-                        floor(coord_limits[2] * 10) / 10, 
-                        by = 0.1)
-      # Labels only at min and max
-      coord_label_at <- coord_limits
-      coord_labels <- round(coord_limits, 1)
-      
-    } else {
-      coord_grid <- pretty(coord_limits, n = 5)
-      coord_label_at <- coord_limits
-      coord_labels <- round(coord_limits, 1)
-    }
-    
-    scale_x_continuous(
-      breaks = coord_label_at,      # Only show labels at min/max
-      labels = coord_labels,
-      limits = coord_limits,
-      minor_breaks = coord_grid,    # Grid lines at whole numbers or 0.1
-      expand = expansion(mult = c(0.1, 0.1))
-    )
-  })
-
-# Create custom y-scales for each facet
-y_scales_cor <- pe_heatmap_data %>%
-  distinct(matrix, row) %>%
-  arrange(matrix, row) %>%
-  split(.$matrix) %>%
-  lapply(function(df) {
-    
-    m <- unique(df$matrix)
-    
-    coord_limits <- c(min(df$row), max(df$row))
-    
-    if (m %in% c("Abs. Rank", "Rel. T.I.", "Rel. Ear Rank")) {
-      # Grid lines at whole numbers
-      coord_grid <- seq(ceiling(coord_limits[1]), floor(coord_limits[2]), by = 1)
-      # Labels only at min and max
-      coord_label_at <- coord_limits
-      coord_labels <- round(coord_limits, 0)
-      
-    } else if (m == "Leaf No. Norm.") {
-      # Grid lines at 0.1 intervals
-      coord_grid <- seq(ceiling(coord_limits[1] * 10) / 10, 
-                        floor(coord_limits[2] * 10) / 10, 
-                        by = 0.1)
-      # Labels only at min and max
-      coord_label_at <- coord_limits
-      coord_labels <- round(coord_limits, 1)
-      
-    } else {
-      coord_grid <- pretty(coord_limits, n = 5)
-      coord_label_at <- coord_limits
-      coord_labels <- round(coord_limits, 1)
-    }
-    
-    scale_y_reverse(
-      breaks = coord_label_at,      # Only show labels at min/max
-      labels = coord_labels,
-      limits = rev(coord_limits),   # Reversed for scale_y_reverse
-      minor_breaks = coord_grid,    # Grid lines at whole numbers or 0.1
-      expand = expansion(mult = c(0.1, 0.1))
-    )
-  })
-
-# Create heatmap with highlighted regions and matching colors
-p_pe_cor <- ggplot(pe_heatmap_data, aes(x = col, y = row, fill = value)) +
-  geom_tile() +
-  geom_rect(data = pe_rect_data,
-            aes(xmin = xmin, xmax = xmax,
-                ymin = ymin, ymax = ymax),
-            fill = NA, color = "grey", linewidth = 1, inherit.aes = FALSE) +
-  ggh4x::facet_wrap2(~ matrix, ncol = 4, scales = "free", axes = "all") +
-  ggh4x::facetted_pos_scales(
-    x = x_scales_cor,
-    y = y_scales_cor
-  ) +
-  scale_fill_gradient2(
-    low = "blue", mid = "white", high = "red", 
-    midpoint = 0, 
-    limits = c(-1, 1),                 # optional but recommended
-    breaks = seq(-1, 1, by = 0.5),      # <-- 0.5 breaks
-    name = "Correlation",
-    guide = guide_colorbar(
-      barwidth = unit(3, "cm"),
-      barheight = unit(0.5, "cm"),
-      title.position = "left",
-      title.vjust = 0.8
-    )
-  ) +
-  labs(title = "B", x = "Registration coordinates", y = "Registration\ncoordinates") +
-  theme_bw() +
-  theme(
-    aspect.ratio = 1,
-    legend.position = "none",
-    # legend.position = c(0.65, 1.5),
-    # legend.justification = c(0, 1),
-    # legend.direction = "horizontal",
-    # legend.box.spacing = unit(0, "cm"),
-    # legend.text = element_text(size = 12),
-    # legend.margin = margin(t = 0, r = 0, b = 0, l = 0),
-    # legend.title = element_text(size = 10, face = "bold"),
-    plot.title = element_text(hjust = 0, size = 15, face = "bold"),
-    axis.text.x = element_text(size = 12, angle = 90, vjust = 0.5, hjust = 1),
-    axis.text.y = element_text(size = 12, hjust = 1),
-    axis.title = element_text(size = 14),
-    axis.title.x = element_text(size = 14, margin = margin(t = 10)),
-    axis.title.y = element_text(size = 14, margin = margin(r = 10)),
-    panel.grid.major.x = element_blank(),  # Turn off major grid
-    panel.grid.minor.x = element_line(linewidth = 0.3, colour = "grey90"),  # Use minor for custom grid
-    panel.grid.major.y = element_blank(),  # Turn off major grid
-    panel.grid.minor.y = element_line(linewidth = 0.3, colour = "grey90"),  # Use minor for custom grid
-    strip.text = element_text(),
-    panel.spacing = unit(1, "lines")
-  )
-p_pe_cor
-
-# # Version without legend
-p_pe_cor_no_legend <- p_pe_cor +
-  theme(legend.position = "none")
-p_pe_cor_no_legend
-
-# ==============================================================================
-# 4c. Platform Exp. (pe) - Scaled variance across grid (diagonal)
-# ==============================================================================
-# Plot variance by rank position
-pe_combined_var <- pe_combined_cov %>%
-  dplyr::filter(type == "Variance") %>%
-  dplyr::group_by(matrix) %>%
-  dplyr::mutate(idx = row_number(),
-                value_s = as.vector(scale(value, center=T, scale=T)))
-
-pe_combined_var <- pe_combined_var %>%
-  mutate(matrix = factor(matrix, levels = c("Abs. Rank", "Rel. T.I.", "Rel. Ear Rank", "Leaf No. Norm.")))
-
-# Create custom x-scales for each facet
-x_scales_var <- pe_combined_var %>%
-  distinct(matrix, row_coord) %>%
-  arrange(matrix, row_coord) %>%
-  split(.$matrix) %>%
-  lapply(function(df) {
-    
-    m <- unique(df$matrix)
-    
-    coord_limits <- c(min(df$row_coord), max(df$row_coord))
-    
-    if (m %in% c("Abs. Rank", "Rel. T.I.", "Rel. Ear Rank")) {
-      # Grid lines at whole numbers
-      coord_grid <- seq(ceiling(coord_limits[1]), floor(coord_limits[2]), by = 1)
-      # Labels only at min and max
-      coord_label_at <- coord_limits
-      coord_labels <- round(coord_limits, 0)
-      
-    } else if (m == "Leaf No. Norm.") {
-      # Grid lines at 0.1 intervals
-      coord_grid <- seq(ceiling(coord_limits[1] * 10) / 10, 
-                        floor(coord_limits[2] * 10) / 10, 
-                        by = 0.1)
-      # Labels only at min and max
-      coord_label_at <- coord_limits
-      coord_labels <- round(coord_limits, 1)
-      
-    } else {
-      coord_grid <- pretty(coord_limits, n = 5)
-      coord_label_at <- coord_limits
-      coord_labels <- round(coord_limits, 1)
-    }
-    
-    scale_x_continuous(
-      breaks = coord_label_at,      # Only show labels at min/max
-      labels = coord_labels,
-      limits = coord_limits,
-      minor_breaks = coord_grid,    # Grid lines at whole numbers or 0.1
-      expand = expansion(mult = c(0.1, 0.1))
-    )
-  })
-
-# Create faceted plot
-p_pe_var <- ggplot(pe_combined_var, aes(x = row_coord, y = value, color = matrix))  +
-  
-  geom_rect(data = rect_grad_fe,
-            aes(xmin = xmin, xmax = xmax, ymin = -Inf, ymax = Inf, fill = fill_norm),
-            inherit.aes = FALSE) +
-  scale_fill_gradient(low = alpha("grey85", 0.2), high = alpha("grey50", 0.7), guide = "none") +
-  
-  facet_wrap(~ matrix, scales = "free") +
-  geom_line(linewidth = 1.2) +
-  ggh4x::facet_wrap2(~ matrix, scales = "free_x", ncol = 4, axes = "all") +
-  ggh4x::facetted_pos_scales(
-    x = x_scales_var
-  ) +
-  scale_color_manual(values = c(
-    "Abs. Rank"      = "#0072B2",
-    "Rel. Ear Rank"  = "#D55E00",
-    "Rel. T.I."      = "#009E73",
-    "Leaf No. Norm." = "#CC79A7"
-  )) +
-  labs(title = "C", x = "Registration coordinates", y = "Variance\n") +
-  # scale_y_continuous(labels = scales::label_number(accuracy = 0.1),
-  #                    limits = c(-2.0, 3.0),
-  #                    breaks = function(lim) seq(-2.0, 3.0, 1)) +
-  scale_y_continuous(limits = c(0, 325),
-                     breaks = function(lim) seq(0, 350, 100)) +
-  theme_bw() +
-  theme(
-    aspect.ratio = 1,
-    legend.position = "none",
-    plot.title = element_text(hjust = 0, size = 15, face = "bold"),
-    axis.text.x = element_text(size = 12, angle = 90, vjust = 0.5, hjust = 1),
-    axis.text.y = element_text(size = 12, hjust = 1),
-    axis.title = element_text(size = 14),
-    axis.title.x = element_text(size = 14, margin = margin(t = 10)),
-    axis.title.y = element_text(size = 14, margin = margin(r = 10)),
-    panel.grid.major.x = element_blank(),  # Turn off major grid
-    panel.grid.minor.x = element_line(linewidth = 0.3, colour = "grey90"),  # Use minor for custom grid
-    panel.grid.major.y = element_line(linewidth = 0.3, colour = "grey90"),
-    panel.grid.minor.y = element_blank(),
-    strip.text = element_text(),
-    panel.spacing = unit(1, "lines")
-  )
-p_pe_var
-
-# # ==============================================================================
-# # 4d. Platform Exp. (pe) - Mean covariance across grid (off-diagonal)
-# # ==============================================================================
-# # Calculate mean correlation per lag distance
-pe_combined_cor_lag <- pe_combined_cor %>%
-  filter(type == "Cor_offdiag") %>%
-  mutate(lag_idx = abs(col_idx - row_idx),
-         lag_rank = round(abs(col_coord - row_coord), 2)) %>%
-  group_by(matrix, lag_idx) %>%
-  summarise(mean_cov = mean(value, na.rm = TRUE),
-            lag_rank = first(lag_rank),  # Or median(lag_rank), min(lag_rank), etc.
-            .groups = "drop")
-
-pe_combined_cor_lag <- pe_combined_cor_lag %>%
-  mutate(matrix = factor(matrix, levels = c("Abs. Rank", "Rel. T.I.", "Rel. Ear Rank", "Leaf No. Norm.")))
-
-rank_to_idx <- function(target_rank, lag_rank, lag_idx) {
-  approx(
-    x = lag_rank,
-    y = lag_idx,
-    xout = target_rank,
-    rule = 2
-  )$y
-}
-
-x_scales <- pe_combined_cor_lag %>%
-  distinct(matrix, lag_idx, lag_rank) %>%
-  arrange(matrix, lag_idx) %>%
-  split(.$matrix) %>%
-  lapply(function(df) {
-    
-    m <- unique(df$matrix)
-    
-    rank_limits <- c(min(df$lag_rank), max(df$lag_rank))
-    
-    if (m %in% c("Abs. Rank", "Rel. T.I.", "Rel. Ear Rank")) {
-      # Grid lines at whole numbers
-      rank_grid <- seq(ceiling(rank_limits[1]), floor(rank_limits[2]), by = 1)
-      # Labels only at min and max
-      rank_label_at <- rank_limits
-      rank_labels <- round(rank_limits, 0)
-      
-    } else if (m == "Leaf No. Norm.") {
-      # Grid lines at 0.1 intervals
-      rank_grid <- seq(ceiling(rank_limits[1] * 10) / 10, 
-                       floor(rank_limits[2] * 10) / 10, 
-                       by = 0.1)
-      # Labels only at min and max
-      rank_label_at <- rank_limits
-      rank_labels <- round(rank_limits, 1)
-      
-    } else {
-      rank_grid <- pretty(rank_limits, n = 5)
-      rank_label_at <- rank_limits
-      rank_labels <- round(rank_limits, 1)
-    }
-    
-    # Convert grid positions to idx
-    idx_grid <- rank_to_idx(
-      target_rank = rank_grid,
-      lag_rank = df$lag_rank,
-      lag_idx  = df$lag_idx
-    )
-    
-    # Convert label positions to idx
-    idx_labels <- rank_to_idx(
-      target_rank = rank_label_at,
-      lag_rank = df$lag_rank,
-      lag_idx  = df$lag_idx
-    )
-    
-    idx_limits <- rank_to_idx(
-      target_rank = rank_limits,
-      lag_rank = df$lag_rank,
-      lag_idx  = df$lag_idx
-    )
-    
-    scale_x_continuous(
-      breaks = idx_labels,      # Only show labels at min/max
-      labels = rank_labels,
-      limits = idx_limits,
-      minor_breaks = idx_grid,  # Grid lines at whole numbers or 0.1
-      expand = expansion(mult = c(0.1, 0.1))
-    )
-  })
-
-# Create lag plot
-p_pe_cov_lag <- ggplot(pe_combined_cor_lag, aes(x = lag_idx, y = mean_cov, color = matrix)) +
-  geom_rect(data = rect_grad_fe,
-            aes(xmin = xmin, xmax = xmax, ymin = -Inf, ymax = Inf, fill = fill_norm),
-            inherit.aes = FALSE) +
-  scale_fill_gradient(low = alpha("grey85", 0.2), high = alpha("grey50", 0.7), guide = "none") +
-  geom_line(linewidth = 1.2) +
-  scale_y_continuous(limits = c(-0.5, 1.0),
-                     breaks = function(lim) seq(-0.5, 1.0, 0.5)) +
-  ggh4x::facet_wrap2(~ matrix, scales = "free_x", ncol = 4, axes = "all") +
-  ggh4x::facetted_pos_scales(
-    x = x_scales
-  ) +
-  scale_color_manual(values = c(
-    "Abs. Rank"      = "#0072B2",
-    "Rel. Ear Rank"  = "#D55E00",
-    "Rel. T.I."      = "#009E73",
-    "Leaf No. Norm." = "#CC79A7"
-  )) +
-  labs(title = "D", x = "Registration lag distance", y = "Mean\ncorrelation") +
-  theme_bw() +
-  theme(
-    aspect.ratio = 1,
-    legend.position = "none",
-    plot.title = element_text(hjust = 0, size = 15, face = "bold"),
-    axis.text.x = element_text(size = 12, angle = 90, vjust = 0.5, hjust = 1),
-    axis.text.y = element_text(size = 12, hjust = 1),
-    axis.title = element_text(size = 14),
-    axis.title.x = element_text(size = 14, margin = margin(t = 10)),
-    axis.title.y = element_text(size = 14, margin = margin(r = 10)),
-    panel.grid.major.x = element_blank(),  # Turn off major grid
-    panel.grid.minor.x = element_line(linewidth = 0.3, colour = "grey90"),  # Use minor for custom grid
-    panel.grid.major.y = element_line(linewidth = 0.3, colour = "grey90"),
-    panel.grid.minor.y = element_blank(),
-    strip.text = element_text(),
-    panel.spacing = unit(1, "lines")
-  )
-p_pe_cov_lag
-
-# ==============================================================================
-# 4. pe - COMBINE PLOTS
-# ==============================================================================
-
-
-# Create the adjusted plots
-fixed_left_margin <- 25
-p_pe_mu_adj <- p_pe_mu +
-  theme(
-    plot.margin = margin(5.5, 5.5, 5.5, fixed_left_margin, "pt"),
-    axis.title.y = element_text(margin = margin(r = 8))
-  )
-p_pe_cor_no_legend_adj <- p_pe_cor_no_legend +
-  theme(
-    plot.margin = margin(5.5, 5.5, 5.5, fixed_left_margin, "pt"),
-    axis.title.y = element_text(margin = margin(r = 15))
-  )
-p_pe_var_adj <- p_pe_var +
-  theme(
-    plot.margin = margin(5.5, 5.5, 5.5, fixed_left_margin, "pt"),
-    axis.title.y = element_text(margin = margin(r = 5))
-  )
-p_pe_cov_lag_adj <- p_pe_cov_lag +
-  theme(
-    plot.margin = margin(5.5, 5.5, 5.5, fixed_left_margin, "pt"),
-    axis.title.y = element_text(margin = margin(r = 5)),
-    axis.title.x = element_text(margin = margin(t = 15))
-  )
-
-# # Convert to grobs
-# g_mu <- ggplotGrob(p_pe_mu_adj)
-# g_cor <- ggplotGrob(p_pe_cor_no_legend_adj)
-# g_var <- ggplotGrob(p_pe_var_adj)
-# g_lag <- ggplotGrob(p_pe_cov_lag_adj)
-# 
-# # Find the panel columns (where the actual plot panels are)
-# panel_cols <- g_mu$layout$l[grep("panel", g_mu$layout$name)]
-# 
-# # Get the maximum width for each column position across all plots
-# all_grobs <- list(g_mu, g_cor, g_var, g_lag)
-# max_widths <- do.call(unit.pmax, lapply(all_grobs, function(g) g$widths))
-# 
-# # Apply the maximum widths to all grobs
-# for(i in seq_along(all_grobs)) {
-#   all_grobs[[i]]$widths <- max_widths
-# }
-# 
-# # Combine using patchwork with the aligned grobs
-# pe_combined_plot <- wrap_plots(
-#   all_grobs[[1]], 
-#   all_grobs[[2]], 
-#   all_grobs[[3]], 
-#   all_grobs[[4]],
-#   ncol = 1,
-#   heights = c(1, 1, 1, 1)
-# )
-# 
-# timestamp <- format(Sys.time(), "%d%m%Y")
-# ggsave(
-#   filename = paste0(fig_dir, "Fig4_pe_", timestamp, ".pdf"), 
-#   plot = pe_combined_plot, 
-#   width = 7.5,
-#   height = 10,
-#   dpi = 300
-# )
-
-# Change titles to A, B, C, D
-p_pe_mu_adj <- p_pe_mu_adj + labs(title = "A")
-p_pe_cor_no_legend_adj <- p_pe_cor_no_legend_adj + labs(title = "B")
-p_pe_var_adj <- p_pe_var_adj + labs(title = "C")
-p_pe_cov_lag_adj <- p_pe_cov_lag_adj + labs(title = "D")
-
-# Convert to grobs
-g_mu <- ggplotGrob(p_pe_mu_adj)
-g_cor <- ggplotGrob(p_pe_cor_no_legend_adj)
-g_var <- ggplotGrob(p_pe_var_adj)
-g_lag <- ggplotGrob(p_pe_cov_lag_adj)
-
-# Find the panel columns (where the actual plot panels are)
-panel_cols <- g_mu$layout$l[grep("panel", g_mu$layout$name)]
-
-# Get the maximum width for each column position across all plots
-all_grobs <- list(g_mu, g_cor, g_var)
-max_widths <- do.call(unit.pmax, lapply(all_grobs, function(g) g$widths))
-
-# Apply the maximum widths to all grobs
-for(i in seq_along(all_grobs)) {
-  all_grobs[[i]]$widths <- max_widths
-}
-
-# Combine using patchwork with the aligned grobs
-pe_combined_plot <- wrap_plots(
-  all_grobs[[1]], 
-  all_grobs[[2]], 
-  all_grobs[[3]], 
-  # all_grobs[[4]],
-  ncol = 1,
-  heights = c(1, 1, 1)
-)
-
-ggsave(
-  filename = paste0(fig_dir, "Fig4_pe_standalone_blade_", timestamp, ".pdf"), 
-  plot = pe_combined_plot, 
-  width = 7.5,
-  height = 7.5,
-  dpi = 300
-)
-
-# Simple plot just for the legend
-pe_legend_temp <- ggplot(pe_heatmap_data,
-                         aes(x = col, y = row, fill = value)) +
-  geom_tile() +
-  scale_fill_gradient2(
-    low = "blue",
-    mid = "white",
-    high = "red",
-    midpoint = 0,
-    limits = c(-1, 1),                 # optional but recommended
-    breaks = seq(-1, 1, by = 0.5),      # <-- 0.5 breaks
-    name = "Correlation",
-    guide = guide_colorbar(
-      barwidth = unit(3.0, "cm"),
-      barheight = unit(0.5, "cm"),
-      title.position = "left",
-      title.vjust = 0.8
-    )
-  ) +
-  theme(legend.direction = "horizontal")
-
-# Extract the legend
-pe_cor_legend_h <- get_legend(pe_legend_temp)
-pe_cor_legend_h <- ggdraw(pe_cor_legend_h)
-
-# # View it
-pe_cor_legend_h
-
-ggsave(
-  filename = paste0(fig_dir, "pe_cor_legend_h_", timestamp, ".pdf"), 
-  plot = pe_cor_legend_h, 
-  width = 2.25, 
-  height = 0.5,  # Increased height for 4 stacked plots
-  dpi = 300
-)
-
-
-
-
-
-# ==============================================================================
-# Field Exp. (fe)
 # ==============================================================================
 
 # Define "fe" ranges if TI for each matrix (CUSTOMIZE THESE!)
@@ -2090,8 +1196,6 @@ p_resid_smooth <- ggplot(
 p_resid_smooth
 
 
-
-
 # ==============================================================================
 # 4. fe - COMBINE PLOTS
 # ==============================================================================
@@ -2126,42 +1230,6 @@ p_resid_smooth_adj<-p_resid_smooth+
     axis.title.x = element_text(margin = margin(t = 15))
   )
 
-# # Convert to grobs
-# g_mu <- ggplotGrob(p_fe_mu_adj)
-# g_cor <- ggplotGrob(p_fe_cor_no_legend_adj)
-# g_var <- ggplotGrob(p_fe_var_adj)
-# g_lag <- ggplotGrob(p_fe_cov_lag_adj)
-# 
-# # Find the panel columns (where the actual plot panels are)
-# panel_cols <- g_mu$layout$l[grep("panel", g_mu$layout$name)]
-# 
-# # Get the maximum width for each column position across all plots
-# all_grobs <- list(g_mu, g_cor, g_var, g_lag)
-# max_widths <- do.call(unit.pmax, lapply(all_grobs, function(g) g$widths))
-# 
-# # Apply the maximum widths to all grobs
-# for(i in seq_along(all_grobs)) {
-#   all_grobs[[i]]$widths <- max_widths
-# }
-# 
-# # Combine using patchwork with the aligned grobs
-# fe_combined_plot <- wrap_plots(
-#   all_grobs[[1]], 
-#   all_grobs[[2]], 
-#   all_grobs[[3]], 
-#   all_grobs[[4]],
-#   ncol = 1,
-#   heights = c(1, 1, 1, 1)
-# )
-# 
-# timestamp <- format(Sys.time(), "%d%m%Y")
-# ggsave(
-#   filename = paste0(fig_dir, "Fig4_fe_", timestamp, ".pdf"), 
-#   plot = fe_combined_plot, 
-#   width = 7.5,
-#   height = 10,
-#   dpi = 300
-# )
 
 
 # Change titles to A, B, C, D
@@ -2201,6 +1269,8 @@ fe_combined_plot <- wrap_plots(
   heights = c(1, 1, 1)
 )
 
+
+#save it
 ggsave(
   filename = paste0(fig_dir, "Fig4_fe_standalone_blade_", timestamp, ".pdf"), 
   plot = fe_combined_plot, 
@@ -2238,6 +1308,8 @@ fe_cor_legend_h <- ggdraw(fe_cor_legend_h)
 # # View it
 fe_cor_legend_h
 
+
+#save it
 ggsave(
   filename = paste0(fig_dir, "fe_cor_legend_h_", timestamp, ".pdf"), 
   plot = fe_cor_legend_h, 

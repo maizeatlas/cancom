@@ -34,7 +34,7 @@ setwd("/rootpath/to/your/project")
 library(tidyverse) #data manipulation and ggplot
 library(mgcv) #GAM
 library(ggh4x) #facetting
-library(mgcv)
+
 
 # ---- Paths ----
 dat_dir = paste0(getwd(),"/data/")
@@ -45,7 +45,7 @@ fig_dir = paste0(getwd(),"/figures/")
 # ==============================================================================
 
 #canopy dimensions
-my_dat0 <- read.csv(paste0(dat_dir,"04_dat_platform_canopy.csv")) %>%
+my_dat0 <- read.csv(paste0(dat_dir,"03_dat_platform_canopy.csv")) %>%
   dplyr::group_by(pot)%>%
   dplyr::mutate(t_i=(tot_leaf-6.5)/1.51)%>%
   dplyr::mutate(pot=as.factor(pot))%>%
@@ -54,7 +54,7 @@ my_dat0 <- read.csv(paste0(dat_dir,"04_dat_platform_canopy.csv")) %>%
 
 
 #phenological data
-my_dat1 <- read.csv(paste0(dat_dir,"04_dat_platform_allpheno.csv")) %>%
+my_dat1 <- read.csv(paste0(dat_dir,"03_dat_platform_allpheno.csv")) %>%
   dplyr::mutate(pot=as.factor(pot))%>%
   left_join(my_dat0%>%
               dplyr::select(t_i,earleaf, pot)%>%
@@ -303,18 +303,6 @@ mergePred <- int_phyllo %>%
 
 
 
-#adding ear
-mergePred_ear <- mergePred %>%
-  left_join(
-    my_dat0 %>%
-      dplyr::select(pot, earleaf) %>%
-      unique(),
-    by = "pot"
-  ) %>%
-  dplyr::group_by(pot, parameter, variable)%>%
-  dplyr::filter(leaf == earleaf)%>%
-  ungroup()
-
 # ==============================================================================
 # 5.Check plot aspects
 # ==============================================================================
@@ -333,12 +321,11 @@ distance <- mergePred %>%
 # 6. Plots
 # ==============================================================================
 
-
-
-# --- Plot T.I. ---------------------------------------------------------
-
+#separately by phytomer component
 p5 <- ggplot(mergePred, aes(x = flexposure, y = y_pred, group = pot)) +
   geom_vline(xintercept = 0, linewidth = 1.2) +
+  
+  #individual plants
   geom_line(alpha = 0.3, colour = "grey60", linewidth = 0.5) +
   
   # Population smooths
@@ -418,14 +405,18 @@ p5 <- ggplot(mergePred, aes(x = flexposure, y = y_pred, group = pot)) +
   )
 
 
+#print it
 p5
 
+#save it
 timestamp <- format(Sys.time(), "%d%m%Y")
 ggsave(plot=p5, paste0(fig_dir, "Fig3A_", timestamp, ".pdf"), width = 7, height = 5, dpi = 300,  bg = "transparent")
 saveRDS(p5, file = paste0(fig_dir, "Fig3A_", timestamp, ".rds"))
 
 
-#Normalized plot
+#Normalized plot combining all phytomers
+
+
 p6 <- ggplot(mergePred %>% filter(norm_length >= 0),  # Cut at 0
        aes(x = flexposure, y = norm_length, 
            group = variable, 
@@ -494,8 +485,11 @@ p6 <- ggplot(mergePred %>% filter(norm_length >= 0),  # Cut at 0
     panel.grid.minor.x = element_blank(),  # Remove vertical minor lines
     panel.grid.minor.y = element_blank()  # Remove horizontal minor lines
   )
+
+#print it
 p6
 
+#save it 
 timestamp <- format(Sys.time(), "%d%m%Y")
 ggsave(plot=p6, paste0(fig_dir, "Fig3B_", timestamp, ".pdf"), width = 7/1.48, height = 5/1.48, dpi = 300,  bg = "transparent")
 saveRDS(p6, file = paste0(fig_dir, "Fig3B_", timestamp, ".rds"))

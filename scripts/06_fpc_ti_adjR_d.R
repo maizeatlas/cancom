@@ -30,7 +30,6 @@ setwd("/rootpath/to/your/project")
 # ==============================================================================
 
 library(tidyverse) #data manipulation
-library(broom) #model output
 library(fdapace) #functional data analysis
 library(patchwork) #combining plots
 
@@ -45,32 +44,7 @@ timestamp <- format(Sys.time(), "%d%m%Y")
 # ==============================================================================
 
 #canopy dimensions from the field
-name_fixes <- read_xlsx(paste0(dat_dir, "pg_unmatched_gtypes_in_ptypes.xlsx")) %>%
-  dplyr::mutate(sample_ptype = tolower(sample_ptype))
-
-my_dat1 <- read.csv(paste0(dat_dir, "05_dat_field_canopy.csv")) %>%
-  #dplyr::filter(un_num != "98_4_1" & un_num != "122_1_2")
-  dplyr::rename(genotype = variety_id_n) %>%
-  dplyr::mutate(genotype = tolower(genotype)) %>%
-  dplyr::left_join(name_fixes, by = c("genotype" = "sample_ptype")) %>%
-  dplyr::mutate(genotype = dplyr::coalesce(sample_gtype, genotype)) %>%
-  dplyr::select(-sample_gtype) %>%
-  dplyr::filter(genotype != "NA")
-
-#quick check
-sfd<-my_dat1%>%
-  dplyr::filter(!is.na(Length))%>%
-  droplevels()%>%
-  # dplyr::group_by(un_num)%>%
-  # dplyr::select(un_num)%>%
-  # distinct()%>%
-  #  group_by(un_num)%>%
-  #   tally()
-  dplyr::group_by(origin)%>%
-  dplyr::select(variety_id_n)%>%
-  distinct()%>%
-  count()
-
+my_dat1<-read.csv(paste0(dat_dir, "04_dat_field_canopy_rvn.csv"))
 
 
 # ==============================================================================
@@ -105,13 +79,14 @@ run_fpca <- function(df, group_var, time_var, trait_col) {
   result
 }
 
+#run function by registration system
 fe_b_l <- run_fpca(my_dat1, "un_num", "Leaf",  "Length")
 fe_b_t <- run_fpca(my_dat1, "un_num", "rel_t", "Length")
 fe_b_e <- run_fpca(my_dat1, "un_num", "rel_e", "Length")
 fe_b_n <- run_fpca(my_dat1, "un_num", "rel_n", "Length")
 
 # ==============================================================================
-# 3. Helpers
+# 3. Helper functions
 # ==============================================================================
 
 extract_fpca_scores <- function(fpca_result, original_df, group_var,
@@ -240,6 +215,7 @@ ln_comp <- dplyr::bind_rows(
 
 subset_cols <- c(Pooled = "grey45", France = "#1f77b4", Mexico = "#d62728")
 
+#plot it
 ln_focus_plot <- ggplot(ln_pc, aes(x = r2, y = PC, color = subset)) +
   geom_vline(data = ln_comp, aes(xintercept = functional_r2),
              linetype = "dashed", color = "grey55", linewidth = 0.4) +
@@ -274,8 +250,12 @@ ln_focus_plot <- ggplot(ln_pc, aes(x = r2, y = PC, color = subset)) +
     plot.margin        = margin(3, 3, 3, 3)
   )
 
+
+#print it
 ln_focus_plot
 
+
+#save it
 ggsave(paste0(fig_dir, "Fig_compR2_lollipop_", timestamp, ".pdf"),
        ln_focus_plot,
        width = 5.5, height = 2, dpi = 300)

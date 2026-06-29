@@ -5,41 +5,17 @@ gc()
 setwd("/rootpath/to/your/project")
 
 # ==============================================================================
-# FPC score-space trajectories: T.I. timing as a directional signal in the
-# functional principal component plane (PC1 vs. PC2)
-#
-#   Pipeline:
-#     1. FPCA is run per registration system (absolute rank, T.I.-relative,
-#        ear-relative, leaf-number normalised) on field blade-length profiles;
-#        FPC scores are extracted and averaged to genotype × origin.
-#     2. Within each origin (France, Mexico), PC1 and PC2 are each regressed
-#        on T.I. timing; predicted trajectories and confidence bands are traced
-#        over a fine T.I. grid, producing a directed path through score space
-#        that captures how developmental timing reshapes the functional profile.
-#     3. Trajectory endpoints are labelled (early / late T.I.) with per-origin,
-#        per-endpoint nudge offsets; arrowheads are appended to the terminal
-#        segment of each path to indicate the direction of increasing T.I.
-#     4. Axis aspect ratio is set proportional to FPC2/FPC1 variance explained,
-#        so visual distances in the score plane reflect relative importance of
-#        each component; panel labels (A–D) correspond to the four registration
-#        systems.
-#
-#   Outputs:
-#     A–D. Fig5A–D — PC1 vs. PC2 score-space plots, one per registration
-#          system, coloured by origin (France / Mexico), with genotype-level
-#          points, linear T.I. trajectories, confidence ribbons, directional
-#          arrows, and endpoint labels; saved individually as PDFs.
+
 # ==============================================================================
+
 library(tidyverse)
 library(data.table)
 library(zoo)
-library(broom)
 library(ggh4x)
 library(patchwork)
 library(cowplot)
 library(ggridges)
 library(fdapace)
-
 
 # ---- Paths ----
 dat_dir = paste0(getwd(),"/data/")
@@ -50,44 +26,9 @@ timestamp <- format(Sys.time(), "%d%m%Y")
 # 1. Read and summarize data 
 # ==============================================================================
 
-#canopy dimensions from the platform
-my_dat0 <- read.csv(paste0(dat_dir,"04_dat_platform_canopy.csv")) %>%
-  dplyr::mutate(t_i = (tot_leaf-6.5)/1.51) %>%
-  dplyr::mutate(pot=as.factor(pot))%>%
-  dplyr::group_by(pot)%>%
-  dplyr::mutate(rel_t = -(t_i-Leaf),
-                rel_e = -(earleaf-Leaf),
-                rel_n = Leaf/tot_leaf,
-                origin = treatment)
 
 #canopy dimensions from the field
-name_fixes <- read_xlsx(paste0(dat_dir, "pg_unmatched_gtypes_in_ptypes.xlsx")) %>%
-  dplyr::mutate(sample_ptype = tolower(sample_ptype))
-
-my_dat1 <- read.csv(paste0(dat_dir, "05_dat_field_canopy.csv")) %>%
-  dplyr::rename(genotype = variety_id_n) %>%
-  dplyr::mutate(genotype = tolower(genotype)) %>%
- # dplyr::filter(un_num != "98_4_1" & un_num != "122_1_2")
-  dplyr::left_join(name_fixes, by = c("genotype" = "sample_ptype")) %>%
-  dplyr::mutate(genotype = dplyr::coalesce(sample_gtype, genotype)) %>%
-  dplyr::select(-sample_gtype) %>%
-  dplyr::filter(genotype != "NA")
-
-
-#quick check
-sfd<-my_dat1%>%
-  dplyr::filter(!is.na(Length))%>%
-  droplevels()%>%
-  dplyr::group_by(un_num)%>%
-  dplyr::select(un_num)%>%
-  distinct()%>%
-  #  group_by(un_num)%>%
-  #   tally()
-  dplyr::group_by(origin)%>%
-  dplyr::select(genotype)%>%
-  distinct()%>%
-  count()
-
+my_dat1<-read.csv(paste0(dat_dir, "04_dat_field_canopy_rvn.csv"))
 
 
 # ==============================================================================
@@ -134,11 +75,7 @@ run_fpca <- function(df, group_var, time_var, trait_col) {
   
 }
 
-# Platform data (blade)
-pe_b_l <- run_fpca(my_dat0, group_var = "pot", time_var = "Leaf", trait_col = "llength")
-pe_b_t <- run_fpca(my_dat0, group_var = "pot", time_var = "rel_t", trait_col = "llength")
-pe_b_e <- run_fpca(my_dat0, group_var = "pot", time_var = "rel_e", trait_col = "llength")        
-pe_b_n <- run_fpca(my_dat0, group_var = "pot", time_var = "rel_n", trait_col = "llength")     
+  
 
 # Field data (blade)
 fe_b_l <- run_fpca(my_dat1, group_var = "un_num", time_var = "Leaf", trait_col = "Length")   
@@ -221,8 +158,6 @@ regress_fpca_scores <- function(fpca_result, original_df, group_var,
       )
   })
 }
-
-
 
 # ==============================================================================
 # 3e. PC1 vs PC2 — linear predicted trajectory of T.I., by origin
@@ -452,10 +387,6 @@ origin_colours <- c(
   "mexico" = "#D55E00"    # Mexican green
 )
 
-# ---- Remove xlim/ylim from function signature ----
-# coord_cartesian stays as-is (no xlim/ylim args), individual saves are free-scale
-# The function is otherwise unchanged; just drop the xlim/ylim parameters and
-# their usage in coord_cartesian.
 
 # ---- Run plots (individual, free-scale, saved) ----
 plots <- purrr::map2(model_specs, nudge_list, function(spec, nudges) {
@@ -472,50 +403,6 @@ plots <- purrr::map2(model_specs, nudge_list, function(spec, nudges) {
     # no xlim/ylim — each panel uses its own natural scale
   )
 })
-
-# # ---- Compute global limits for the combined figure only ----
-# all_geno <- purrr::map(model_specs, function(spec) {
-#   extract_fpca_scores(spec$model, my_dat1, group_var = "un_num") %>%
-#     dplyr::filter(!is.na(t_i)) %>%
-#     dplyr::left_join(geno_lookup, by = "un_num") %>%
-#     dplyr::group_by(variety_id_n, origin) %>%
-#     dplyr::summarise(
-#       PC1 = mean(PC1, na.rm = TRUE),
-#       PC2 = mean(PC2, na.rm = TRUE),
-#       .groups = "drop"
-#     )
-# }) %>% dplyr::bind_rows()
-# 
-# pad <- 0.05
-# global_xlim <- range(all_geno$PC1) + c(-1, 1) * pad * diff(range(all_geno$PC1))
-# global_ylim <- range(all_geno$PC2) + c(-1, 1) * pad * diff(range(all_geno$PC2))
-# 
-# # ---- Apply global limits to copies of the plots for patchwork only ----
-# # This patches the coord without re-running any data pipeline.
-# plots_fixed <- purrr::map(plots, function(p) {
-#   p + coord_cartesian(xlim = global_xlim, ylim = global_ylim, clip = "off")
-# })
-# 
-# # ---- Combined figure ----
-# library(patchwork)
-# 
-# combined <- (plots_fixed[[1]] | plots_fixed[[2]]) / 
-#   (plots_fixed[[3]] | plots_fixed[[4]]) +
-#   plot_layout(guides = "collect") &
-#   theme(
-#     legend.position      = "right",
-#     legend.justification = c(0, 0.5)
-#   )
-# 
-# ggsave(
-#   filename = paste0(fig_dir, "Fig5_combined_", timestamp, ".pdf"),
-#   plot     = combined,
-#   width    = 15, height = 10, dpi = 300
-# )
-
-
-
-
 
 
 

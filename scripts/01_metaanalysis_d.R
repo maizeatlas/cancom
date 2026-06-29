@@ -260,6 +260,8 @@ alpha_vals <- my_dat1_p %>%
   arrange(origin) %>%
   { setNames(.$alpha, .$origin) }
 
+
+#plot it
 p1 <- ggplot(my_dat1_p, aes(phyllo, plasto, color = origin)) +
   geom_point(aes(alpha = origin), size = 2) +
   scale_color_discrete(name = "Study") +
@@ -307,8 +309,11 @@ p1 <- ggplot(my_dat1_p, aes(phyllo, plasto, color = origin)) +
     axis.title.y = element_text(size=14, margin = margin(r = 10)),
     panel.grid.minor = element_line(linewidth = 0.3, colour = "grey85")
   )
+
+#print it
 p1
 
+#save it
 timestamp <- format(Sys.time(), "%d%m%Y")
 ggsave(plot=p1, paste0(fig_dir, "Fig2A_", timestamp, ".pdf"), width = 7, height = 5, dpi = 300)
 saveRDS(p1, file = paste0(fig_dir, "Fig2A_", timestamp, ".rds"))

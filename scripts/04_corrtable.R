@@ -46,23 +46,19 @@ setwd("/rootpath/to/your/project")
 # ==============================================================================
 
 library(tidyverse) #data manipulation
-library(purrr)
-library(mgcv)
-library(statgenHTP)
-library(segmented)
-library(changepoint)
+library(statgenHTP) #for loess
+library(changepoint) #changepoint analysis
 
 # ---- Paths ----
 dat_dir = paste0(getwd(),"/data/")
 fig_dir = paste0(getwd(),"/figures/")
-
 
 # ==============================================================================
 # 1. Read and summarize data 
 # ==============================================================================
 
 # Modeled unadjusted BLUEs from different experiments
-my_dat0 <- read.csv(paste0(dat_dir,"04_dat_platform_canopy.csv"))%>%
+my_dat0 <- read.csv(paste0(dat_dir,"03_dat_platform_canopy.csv"))%>%
            dplyr::mutate(t_i=(tot_leaf-6.5)/1.51)%>%
           dplyr::group_by(pot)%>%
           dplyr::mutate(rel_t=Leaf-t_i)%>%
@@ -110,7 +106,7 @@ obs_range <- data.frame(
 print(obs_range)
 
 # ==============================================================================
-# 2.Phytomer curves
+# 2.Phytomer curves (loess)
 # ==============================================================================
 
 #create timepoint, so that it can be passed on to fit
@@ -342,30 +338,4 @@ cor_table_tidy <- summary_curve %>%
 print(cor_table_tidy)
 
 
-#raw data correlations
-
-# summary_curve <- my_dat0 %>%
-#   pivot_longer(
-#     cols = c("idist":"llength"),
-#     names_to = "feature",
-#     values_to = "value") %>%
-#   dplyr::group_by(pot,genotype, feature) %>%
-#   dplyr::summarise(
-#     max_value = max(value, na.rm = TRUE),
-#     min_value = min(value, na.rm = TRUE),
-#     max_x = Leaf[which.max(value)],   # x corresponding to max y
-#     min_x = Leaf[which.min(value)],   # x corresponding to min y
-#     .groups = "drop")%>%
-#   left_join(my_dat0 %>%
-#               dplyr::select(t_i,earleaf, pot)%>%
-#               distinct(pot, .keep_all = TRUE), by = "pot")%>%
-#   dplyr::group_by(feature) %>%
-#   dplyr::summarise(
-#     n = n(),
-#     cor_ti = cor(max_x, t_i, use = "complete.obs"),
-#     p_ti = cor.test(max_x, t_i)$p.value,
-#     cor_ear = cor(max_x, earleaf, use = "complete.obs"),
-#     p_ear   = cor.test(max_x, earleaf)$p.value,
-#     .groups = "drop"
-#   )
 

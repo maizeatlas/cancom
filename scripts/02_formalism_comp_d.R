@@ -108,6 +108,8 @@ johnson_stats <- stats_by_form_lm %>% filter(mod == "Johnson")
 axis_max <- max(c(mrgelftran$Johnson, mrgelftran$empirical_ti), na.rm = TRUE)
 axis_min <- min(c(mrgelftran$Johnson, mrgelftran$empirical_ti), na.rm = TRUE)
 
+
+#plot it
 p2 <- ggplot(mrgelftran,
        aes(x = empirical_ti, y = Johnson, color = treatment)) +
   scale_x_continuous(
@@ -178,8 +180,11 @@ p2 <- ggplot(mrgelftran,
     axis.title.y = element_text(size = 14, margin = margin(r = 10)),
     panel.grid.minor = element_line(linewidth = 0.3, colour = "grey85")
   )
+
+#print it
 p2
 
+#save it
 timestamp <- format(Sys.time(), "%d%m%Y")
 ggsave(plot=p2, paste0(fig_dir, "Fig2B_", timestamp, ".pdf"), width = 7, height = 5, dpi = 300)
 saveRDS(p2, file = paste0(fig_dir, "Fig2B_", timestamp, ".rds"))

@@ -48,7 +48,6 @@ library(ggpmisc) #plot stats
 
 # ---- Paths ----
 dat_dir= paste0(getwd(),"/data/")
-dat_dir_r = paste0(getwd(),"/data/raw_data/")
 fig_dir = paste0(getwd(),"/figures/")
 timestamp <- format(Sys.time(), "%d%m%Y")
 
@@ -56,20 +55,8 @@ timestamp <- format(Sys.time(), "%d%m%Y")
 # 1. Read and summarize data ----------------
 # ==============================================================================
 
-
-name_fixes <- read_xlsx(paste0(dat_dir,"pg_unmatched_gtypes_in_ptypes.xlsx")) %>%
-  mutate(sample_ptype = tolower(sample_ptype))
-
-
-my_dat1 <- read.csv(paste0(dat_dir,"05_dat_field_canopy.csv")) %>%
-  dplyr::rename(genotype = variety_id_n) %>% 
-  mutate(genotype = tolower(genotype)) %>% 
-  left_join(name_fixes, by = c("genotype" = "sample_ptype")) %>%
-  mutate(genotype = coalesce(sample_gtype, genotype)) %>%
-  dplyr::select(-sample_gtype) %>%
-  dplyr::filter(genotype != "NA") #%>%
-# dplyr::filter(origin=="france")
-
+#canopy dimensions from the field
+my_dat1<-read.csv(paste0(dat_dir, "05_dat_field_canopy_rvn.csv"))
 
 
 # ==============================================================================
@@ -374,6 +361,7 @@ features$longest_leaf
 features$derivs       # feeds directly into find_max_slope_window
 
 
+#table with correlations
 
 score_cor_table <- function(features, fpc_cols = NULL) {
   
