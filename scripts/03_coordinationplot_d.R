@@ -45,7 +45,7 @@ fig_dir = paste0(getwd(),"/figures/")
 # ==============================================================================
 
 #canopy dimensions
-my_dat0 <- read.csv(paste0(dat_dir,"03_dat_platform_canopy.csv")) %>%
+my_dat0 <- read.csv(paste0(dat_dir,"04_dat_platform_canopy.csv")) %>%
   dplyr::group_by(pot)%>%
   dplyr::mutate(t_i=(tot_leaf-6.5)/1.51)%>%
   dplyr::mutate(pot=as.factor(pot))%>%
@@ -54,7 +54,7 @@ my_dat0 <- read.csv(paste0(dat_dir,"03_dat_platform_canopy.csv")) %>%
 
 
 #phenological data
-my_dat1 <- read.csv(paste0(dat_dir,"03_dat_platform_allpheno.csv")) %>%
+my_dat1 <- read.csv(paste0(dat_dir,"05_dat_platform_allpheno.csv")) %>%
   dplyr::mutate(pot=as.factor(pot))%>%
   left_join(my_dat0%>%
               dplyr::select(t_i,earleaf, pot)%>%

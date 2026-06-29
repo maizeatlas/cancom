@@ -55,7 +55,7 @@ timestamp <- format(Sys.time(), "%d%m%Y")
   
 
 #canopy dimensions from the field
-my_dat1<-read.csv(paste0(dat_dir, "04_dat_field_canopy_rvn.csv"))
+my_dat1<-read.csv(paste0(dat_dir, "06_dat_field_canopy_rvn.csv"))
 
 
 # ==============================================================================

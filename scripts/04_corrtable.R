@@ -58,7 +58,7 @@ fig_dir = paste0(getwd(),"/figures/")
 # ==============================================================================
 
 # Modeled unadjusted BLUEs from different experiments
-my_dat0 <- read.csv(paste0(dat_dir,"03_dat_platform_canopy.csv"))%>%
+my_dat0 <- read.csv(paste0(dat_dir,"04_dat_platform_canopy.csv"))%>%
            dplyr::mutate(t_i=(tot_leaf-6.5)/1.51)%>%
           dplyr::group_by(pot)%>%
           dplyr::mutate(rel_t=Leaf-t_i)%>%

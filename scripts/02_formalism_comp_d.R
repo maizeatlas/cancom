@@ -45,7 +45,7 @@ samint_alt <- read.csv(paste0(dat_dir,"02_dat_platform_SAM.csv")) %>%
   rename(empirical_ti=fit)
 
 #total leaf number BLUEs from harvest
-tot_leaf <- read.csv(paste0(dat_dir,"02_dat_platform_finalleafno.csv")) %>%
+tot_leaf <- read.csv(paste0(dat_dir,"03_dat_platform_finalleafno.csv")) %>%
   dplyr::mutate(across(c(genotype,treatment),as.factor),
                 treatment=fct_recode(treatment, "nightbreak"="NB", "control"="Control"))
 
