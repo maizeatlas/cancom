@@ -1,0 +1,961 @@
+﻿origin,genotype,treatment,comment,method,phyllo,plasto
+Andrieu,Dea,nd,25um,digitized,2.76,7.01E+00
+Andrieu,Dea,nd,25um,digitized,3.53,8.54E+00
+Andrieu,Dea,hd,25um,digitized,3.57,9.111844487
+Andrieu,Dea,nd,25um,digitized,4.3,9.81E+00
+Andrieu,Dea,nd,25um,digitized,4.49,1.03E+01
+Andrieu,Dea,nd,25um,digitized,4.65,1.03E+01
+Andrieu,Dea,hd,25um,digitized,4.96,10.8785168
+Andrieu,Dea,nd,25um,digitized,5.4,1.10E+01
+Andrieu,Dea,hd,25um,digitized,4.94,11.08907048
+Andrieu,Dea,nd,25um,digitized,5.35,1.13E+01
+Andrieu,Dea,nd,25um,digitized,5.3,1.13E+01
+Andrieu,Dea,hd,25um,digitized,5.39,12.14113801
+Andrieu,Dea,hd,25um,digitized,5.88,13.12999361
+Andrieu,Dea,hd,25um,digitized,6.2,13.6348534
+Andrieu,Dea,hd,25um,digitized,6.52,13.95023914
+Andrieu,Dea,nd,25um,digitized,6.68,1.43E+01
+Andrieu,Dea,hd,25um,digitized,7.2,15.14937886
+Bassiri,A632xW123,NA,0.5apex,digitized,2.88,8.90E+00
+Bassiri,A632xW123,NA,0.5apex,digitized,2.96,9.37E+00
+Bassiri,A632xW123,NA,0.5apex,digitized,3.54,9.82E+00
+Bassiri,A632xW123,NA,0.5apex,digitized,5.15,1.20E+01
+Bassiri,A632xW123,NA,0.5apex,digitized,4.93,1.32E+01
+Bassiri,A632xW123,NA,0.5apex,digitized,5.98,1.47E+01
+Bassiri,A632xW123,NA,0.5apex,digitized,6.23,1.66E+01
+Bassiri,A632xW123,NA,0.5apex,digitized,6.9,1.80E+01
+Bassiri,TP2,mutant,0.5apex,digitized,3.13,8.35E+00
+Bassiri,TP2,mutant,0.5apex,digitized,3.08,8.47E+00
+Bassiri,TP2,mutant,0.5apex,digitized,3.46,9.44E+00
+Bassiri,TP2,mutant,0.5apex,digitized,4.85,1.13E+01
+Bassiri,TP2,mutant,0.5apex,digitized,5.9,1.36E+01
+Bassiri,TP2,mutant,0.5apex,digitized,5.98,1.46E+01
+Bassiri,TP2,mutant,0.5apex,digitized,7.49,1.64E+01
+Bassiri,TP2,mutant,0.5apex,digitized,7.75,1.65E+01
+Bassiri,TP2,mutant,0.5apex,digitized,8.29,1.85E+01
+Bassiri,TP2,mutant,0.5apex,digitized,9.6,1.95E+01
+Bassiri,TP2,mutant,0.5apex,digitized,11.24,2.12E+01
+Birch,C87,experiment1,25um,digitized,3.97,7.070866142
+Birch,C87,experiment1,25um,digitized,5.21,8.041994751
+Birch,C87,experiment1,25um,digitized,5.21,8.934383202
+Birch,C87,experiment1,25um,digitized,5.67,10.03674541
+Birch,C87,experiment1,25um,digitized,5.67,10.9816273
+Birch,C87,experiment2,25um,digitized,7.33,11.00787402
+Birch,C87,experiment1,25um,digitized,6.13,12.00524934
+Birch,C87,experiment2,25um,digitized,8.14,12.03149606
+Birch,C87,experiment1,25um,digitized,8.45,13.05511811
+Birch,C87,experiment2,25um,digitized,8.05,13.05511811
+Birch,C87,experiment2,25um,digitized,9.25,14
+Birch,C87,experiment1,25um,digitized,9.01,14.02624672
+Birch,C87,experiment1,25um,digitized,9.07,14.97112861
+Birch,C87,experiment2,25um,digitized,9.25,15.02362205
+Birch,C87,experiment1,25um,digitized,9.88,16.02099738
+Birch,C87,experiment2,25um,digitized,10.09,16.04724409
+Birch,C87,experiment2,25um,digitized,10.93,16.99212598
+Birch,C87,experiment1,25um,digitized,9.94,17.04461942
+Birch,C87,experiment2,25um,digitized,10.96,18.04199475
+Birch,C87,experiment1,25um,digitized,10.74,18.06824147
+Birch,C87,experiment2,25um,digitized,12.1,19.01312336
+Birch,C87,experiment1,25um,digitized,10.77,20.03674541
+Birch,C87,experiment2,25um,digitized,12.16,20.06299213
+Birch,C87,experiment2,25um,digitized,12.7,20.95538058
+Birch,C87,experiment2,25um,digitized,14.71,22.00524934
+Birch,C87,experiment2,25um,digitized,14.77,23.10761155
+Birch,P3527,NA,25um,digitized,3.94,8.07E+00
+Birch,P3527,NA,25um,digitized,4.51,8.99E+00
+Birch,P3527,NA,25um,digitized,5.98,9.98E+00
+Birch,P3527,NA,25um,digitized,7.32,1.10E+01
+Birch,P3527,NA,25um,digitized,8.15,1.20E+01
+Birch,P3527,NA,25um,digitized,9.09,1.30E+01
+Birch,P3527,NA,25um,digitized,10.06,1.40E+01
+Birch,P3527,NA,25um,digitized,11.03,1.50E+01
+Birch,P3527,NA,25um,digitized,11.7,1.60E+01
+Birch,P3527,NA,25um,digitized,14.57,1.70E+01
+Birch,P3527,NA,25um,digitized,15.28,1.80E+01
+Birch,P3527,NA,25um,digitized,15.98,1.90E+01
+Birch,P3527,NA,25um,digitized,16.85,2.00E+01
+Birch,P3527,NA,25um,digitized,18.65,2.10E+01
+Chenu,Dea,NA,NA,digitized,1.93,6.927772274
+Chenu,Dea,NA,NA,digitized,2.52,8.017743721
+Chenu,Dea,NA,NA,digitized,3.31,8.020657304
+Chenu,Dea,NA,NA,digitized,2.8,8.419526834
+Chenu,Dea,NA,NA,digitized,3.82,8.938581668
+Chenu,Dea,NA,NA,digitized,4.41,10.02855311
+Chenu,Dea,NA,NA,digitized,3.5,10.25421013
+Chenu,Dea,NA,NA,digitized,4.21,10.82935144
+Chenu,Dea,NA,NA,digitized,5.03,11.00416642
+Chenu,Dea,NA,NA,digitized,4.99,12.37806655
+Chenu,Dea,NA,NA,digitized,5.5,12.72347183
+Chenu,Dea,NA,NA,real,6.01,13.6986481
+Chenu,Dea,NA,NA,digitized,5.54,14.0404114
+Chenu,Dea,NA,NA,digitized,6.21,15.01617039
+Chenu,Dea,NA,NA,digitized,6.64,15.64754385
+Chenu,Dea,NA,NA,digitized,7.27,16.45140143
+Fletcher,challenger,NA,NA,digitized,2.64,5.74E+00
+Fletcher,challenger,NA,NA,digitized,2.28,6.15E+00
+Fletcher,challenger,NA,NA,digitized,2.58,6.24E+00
+Fletcher,challenger,NA,NA,digitized,4.12,9.68E+00
+Fletcher,challenger,NA,NA,digitized,4.45,1.02E+01
+Fletcher,challenger,NA,NA,digitized,4.94,1.02E+01
+Fletcher,challenger,NA,NA,digitized,5.28,1.10E+01
+Fletcher,challenger,NA,NA,digitized,5.61,1.15E+01
+Fletcher,challenger,NA,NA,digitized,6.12,1.28E+01
+Fletcher,challenger,NA,NA,digitized,6.12,1.31E+01
+Fletcher,challenger,NA,NA,digitized,7.3,1.43E+01
+Fletcher,challenger,NA,NA,digitized,7.62,1.50E+01
+Fletcher,challenger,NA,NA,digitized,7.96,1.57E+01
+Fletcher,challenger,NA,NA,digitized,8.82,1.59E+01
+Fletcher,challenger,NA,NA,digitized,8.15,1.60E+01
+Hesketh,DeKalbXL45,NA,"apex ridge, disssection microscope",digitized,2.63,6.893617021
+Hesketh,DeKalbXL45,NA,"apex ridge, disssection microscope",digitized,2.09,6.965425532
+Hesketh,DeKalbXL45,NA,"apex ridge, disssection microscope",digitized,3.13,7.970744681
+Hesketh,DeKalbXL45,NA,"apex ridge, disssection microscope",digitized,3.6,8.928191489
+Hesketh,DeKalbXL45,NA,"apex ridge, disssection microscope",digitized,4.19,8.928191489
+Hesketh,DeKalbXL45,NA,"apex ridge, disssection microscope",digitized,3.65,9.909574468
+Hesketh,DeKalbXL45,NA,"apex ridge, disssection microscope",digitized,4.15,9.957446809
+Hesketh,DeKalbXL45,NA,"apex ridge, disssection microscope",digitized,4.69,9.957446809
+Hesketh,DeKalbXL45,NA,"apex ridge, disssection microscope",digitized,4.71,10.93882979
+Hesketh,DeKalbXL45,NA,"apex ridge, disssection microscope",digitized,5.68,11.92021277
+Hesketh,DeKalbXL45,NA,"apex ridge, disssection microscope",digitized,5.7,12.92553191
+Hesketh,DeKalbXL45,NA,"apex ridge, disssection microscope",digitized,6.22,12.94946809
+Hesketh,DeKalbXL45,NA,"apex ridge, disssection microscope",digitized,6.74,12.97340426
+Hesketh,DeKalbXL45,NA,"apex ridge, disssection microscope",digitized,7.24,13.88297872
+Hesketh,DeKalbXL45,NA,"apex ridge, disssection microscope",digitized,8.25,13.95478723
+Hesketh,DeKalbXL45,NA,"apex ridge, disssection microscope",digitized,7.26,14.96010638
+Hesketh,DeKalbXL45,NA,"apex ridge, disssection microscope",digitized,8.27,14.96010638
+Hesketh,DeKalbXL45,NA,"apex ridge, disssection microscope",digitized,8.3,15.94148936
+Lejeune,B22,NA,NA,digitized,3.92,8.05E+00
+Lejeune,B22,NA,NA,digitized,3.71,8.11E+00
+Lejeune,B22,NA,NA,digitized,3.83,8.11E+00
+Lejeune,B22,NA,NA,digitized,4.51,9.07E+00
+Lejeune,B22,NA,NA,digitized,4.71,9.07E+00
+Lejeune,B22,NA,NA,digitized,3.92,9.08E+00
+Lejeune,B22,NA,NA,digitized,4.7,1.01E+01
+Lejeune,B22,NA,NA,digitized,4.62,1.01E+01
+Lejeune,B22,NA,NA,digitized,4.91,1.11E+01
+Lejeune,B22,NA,NA,digitized,5.32,1.21E+01
+Lejeune,B22,NA,NA,digitized,5.41,1.21E+01
+Lejeune,B22,NA,NA,digitized,5.32,1.31E+01
+Lejeune,B22,NA,NA,digitized,5.22,1.31E+01
+Lejeune,B22,NA,NA,digitized,5.61,1.31E+01
+Lejeune,B22,NA,NA,digitized,5.71,1.31E+01
+Lejeune,B22,NA,NA,digitized,5.79,1.31E+01
+Lejeune,B22,NA,NA,digitized,5.9,1.40E+01
+Lejeune,B22,NA,NA,digitized,6.11,1.41E+01
+Lejeune,B22,NA,NA,digitized,6.31,1.41E+01
+Lejeune,B22,NA,NA,digitized,6.49,1.41E+01
+Lejeune,B22,NA,NA,digitized,6.61,1.41E+01
+Lejeune,B22,NA,NA,digitized,6.7,1.51E+01
+Lejeune,B22,NA,NA,digitized,6.81,1.51E+01
+Lejeune,B22,NA,NA,digitized,6.89,1.51E+01
+Lejeune,B22,NA,NA,digitized,7.09,1.51E+01
+Lejeune,B22,NA,NA,digitized,7.2,1.51E+01
+Lejeune,B22,NA,NA,digitized,7.3,1.51E+01
+Lejeune,B22,NA,NA,digitized,7.1,1.61E+01
+Lejeune,B22,NA,NA,digitized,7.4,1.61E+01
+Lejeune,B22,NA,NA,digitized,7.51,1.61E+01
+Lejeune,B22,NA,NA,digitized,7.61,1.61E+01
+Lejeune,B22,NA,NA,digitized,7.71,1.61E+01
+Lejeune,B22,NA,NA,digitized,7.8,1.61E+01
+Lejeune,B22,NA,NA,digitized,7.72,1.70E+01
+Lejeune,B22,NA,NA,digitized,8.8,1.70E+01
+Lejeune,B22,NA,NA,digitized,8.71,1.70E+01
+Lejeune,B22,NA,NA,digitized,8.62,1.70E+01
+Lejeune,B22,NA,NA,digitized,8.51,1.70E+01
+Lejeune,B22,NA,NA,digitized,8.34,1.70E+01
+Lejeune,B22,NA,NA,digitized,8.26,1.70E+01
+Lejeune,B22,NA,NA,digitized,7.8,1.71E+01
+Lejeune,B22,NA,NA,digitized,8.43,1.71E+01
+Lejeune,B22,NA,NA,digitized,8.36,1.71E+01
+Lejeune,B22,NA,NA,digitized,8.48,1.80E+01
+Lejeune,B22,NA,NA,digitized,8.59,1.80E+01
+Lejeune,B22,NA,NA,digitized,8.8,1.80E+01
+Lejeune,B22,NA,NA,digitized,9.4,1.80E+01
+Lejeune,B22,NA,NA,digitized,9.08,1.81E+01
+Lejeune,B22,NA,NA,digitized,8.39,1.90E+01
+Lejeune,B22,NA,NA,digitized,9.09,1.90E+01
+Lejeune,B22,NA,NA,digitized,9.28,1.90E+01
+Lejeune,B22,NA,NA,digitized,9.39,1.90E+01
+Lejeune,B22,NA,NA,digitized,9.49,1.90E+01
+Lejeune,B22,NA,NA,digitized,9.39,2.00E+01
+Louarn,F2,NA,length=apex length,digitized,1.13,6.118871906
+Louarn,F2,NA,length=apex length,digitized,1.84,7.546105976
+Louarn,F2,NA,length=apex length,digitized,2.09,7.570384493
+Louarn,F2,NA,length=apex length,digitized,2.82,8.922326596
+Louarn,F2,NA,length=apex length,digitized,2.58,9.073538915
+Louarn,F2,NA,length=apex length,digitized,4.09,10.2976332
+Louarn,F2,NA,length=apex length,digitized,4.24,10.64827212
+Louarn,F2,NA,length=apex length,digitized,4.44,10.77303514
+Louarn,F2,NA,length=apex length,digitized,4.44,10.99873966
+Louarn,F2,NA,length=apex length,digitized,4.55,11.14886659
+Louarn,F2,NA,length=apex length,digitized,5.82,11.94737274
+Louarn,F2,NA,length=apex length,digitized,5.53,12.44985237
+Louarn,F2,NA,length=apex length,digitized,6.12,12.89943338
+Louarn,F2,NA,length=apex length,digitized,6.39,12.94873305
+Louarn,F2,NA,length=apex length,digitized,6.66,13.8005377
+Louarn,F286,NA,length=apex length,digitized,1.82,6.523076923
+Louarn,F286,NA,length=apex length,digitized,2.82,8.147692308
+Louarn,F286,NA,length=apex length,digitized,2.82,8.418461538
+Louarn,F286,NA,length=apex length,digitized,3.51,9.747692308
+Louarn,F286,NA,length=apex length,digitized,3.51,9.772307692
+Louarn,F286,NA,length=apex length,digitized,3.22,9.821538462
+Louarn,F286,NA,length=apex length,digitized,4.59,11.02769231
+Louarn,F286,NA,length=apex length,digitized,4.84,11.37230769
+Louarn,F286,NA,length=apex length,digitized,4.84,11.47076923
+Louarn,F286,NA,length=apex length,digitized,4.89,11.93846154
+Louarn,F286,NA,length=apex length,digitized,6.49,13.71076923
+Louarn,F286,NA,length=apex length,digitized,6.46,14.08
+Louarn,F286,NA,length=apex length,digitized,6.46,14.30153846
+Louarn,F286,NA,length=apex length,digitized,6.96,14.91692308
+Louarn,F286,NA,length=apex length,digitized,6.96,14.94153846
+Padilla,33G26,NA,0.3apex,real,2,8
+Padilla,33G26,NA,0.3apex,real,2,8
+Padilla,33G26,NA,0.3apex,real,3,8
+Padilla,33G26,NA,0.3apex,real,3,8
+Padilla,33G26,NA,0.3apex,real,3.25,8
+Padilla,33G26,NA,0.3apex,real,3,8
+Padilla,33G26,NA,0.3apex,real,3,8
+Padilla,33G26,NA,0.3apex,real,3,8
+Padilla,33G26,NA,0.3apex,real,3,8
+Padilla,33G26,NA,0.3apex,real,3.5,8
+Padilla,33G26,NA,0.3apex,real,3,9
+Padilla,33G26,NA,0.3apex,real,3.25,9
+Padilla,33G26,NA,0.3apex,real,4.25,10
+Padilla,33G26,NA,0.3apex,real,4.25,10
+Padilla,33G26,NA,0.3apex,real,5.75,11
+Padilla,33G26,NA,0.3apex,real,5.25,11
+Padilla,33G26,NA,0.3apex,real,4.25,11
+Padilla,33G26,NA,0.3apex,real,4.5,11
+Padilla,33G26,NA,0.3apex,real,4.5,11
+Padilla,33G26,NA,0.3apex,real,4.5,11
+Padilla,33G26,NA,0.3apex,real,5,11
+Padilla,33G26,NA,0.3apex,real,5,12
+Padilla,33G26,NA,0.3apex,real,5,12
+Padilla,33G26,NA,0.3apex,real,6.75,13
+Padilla,33G26,NA,0.3apex,real,5.25,13
+Padilla,33G26,NA,0.3apex,real,7.25,14
+Padilla,33G26,NA,0.3apex,real,7.25,14
+Padilla,33G26,NA,0.3apex,real,6.75,14
+Padilla,33G26,NA,0.3apex,real,7,14
+Padilla,33G26,NA,0.3apex,real,6.75,14
+Padilla,33G26,NA,0.3apex,real,6.75,14
+Padilla,33G26,NA,0.3apex,real,8,15
+Padilla,33G26,NA,0.3apex,real,7.25,15
+Padilla,33G26,NA,0.3apex,real,6.5,15
+Padilla,33G26,NA,0.3apex,real,8.5,15
+Padilla,33G26,NA,0.3apex,real,8,16
+Padilla,34B15,NA,0.3apex,real,2,8
+Padilla,34B15,NA,0.3apex,real,3,8
+Padilla,34B15,NA,0.3apex,real,3,8
+Padilla,34B15,NA,0.3apex,real,3.5,8
+Padilla,34B15,NA,0.3apex,real,3.5,8
+Padilla,34B15,NA,0.3apex,real,3.25,8
+Padilla,34B15,NA,0.3apex,real,3.25,8
+Padilla,34B15,NA,0.3apex,real,3.5,8
+Padilla,34B15,NA,0.3apex,real,3.5,8
+Padilla,34B15,NA,0.3apex,real,3,9
+Padilla,34B15,NA,0.3apex,real,3.25,9
+Padilla,34B15,NA,0.3apex,real,3.25,9
+Padilla,34B15,NA,0.3apex,real,4.75,11
+Padilla,34B15,NA,0.3apex,real,4.75,11
+Padilla,34B15,NA,0.3apex,real,4.75,11
+Padilla,34B15,NA,0.3apex,real,5,12
+Padilla,34B15,NA,0.3apex,real,5,12
+Padilla,34B15,NA,0.3apex,real,5,12
+Padilla,34B15,NA,0.3apex,real,5.5,12
+Padilla,34B15,NA,0.3apex,real,6.5,12
+Padilla,34B15,NA,0.3apex,real,5.25,13
+Padilla,34B15,NA,0.3apex,real,6.25,13
+Padilla,34B15,NA,0.3apex,real,6,13
+Padilla,34B15,NA,0.3apex,real,5.25,13
+Padilla,34B15,NA,0.3apex,real,8,15
+Padilla,34B15,NA,0.3apex,real,7.25,15
+Padilla,34B15,NA,0.3apex,real,7.5,15
+Padilla,34B15,NA,0.3apex,real,7.25,15
+Padilla,34B15,NA,0.3apex,real,7.5,15
+Padilla,34B15,NA,0.3apex,real,8.25,16
+Padilla,34B15,NA,0.3apex,real,8.25,16
+Padilla,34B15,NA,0.3apex,real,8.25,16
+Padilla,34B15,NA,0.3apex,real,7.75,16
+Padilla,34B15,NA,0.3apex,real,8.25,17
+Padilla,34B15,NA,0.3apex,real,8.5,17
+Padilla,34B15,NA,0.3apex,real,8.5,17
+Padilla,34K77,NA,0.3apex,real,2,8
+Padilla,34K77,NA,0.3apex,real,2,8
+Padilla,34K77,NA,0.3apex,real,3,8
+Padilla,34K77,NA,0.3apex,real,3,8
+Padilla,34K77,NA,0.3apex,real,3.5,8
+Padilla,34K77,NA,0.3apex,real,3.5,8
+Padilla,34K77,NA,0.3apex,real,3.25,8
+Padilla,34K77,NA,0.3apex,real,3.25,8
+Padilla,34K77,NA,0.3apex,real,3.5,8
+Padilla,34K77,NA,0.3apex,real,3,8
+Padilla,34K77,NA,0.3apex,real,3,9
+Padilla,34K77,NA,0.3apex,real,3.25,9
+Padilla,34K77,NA,0.3apex,real,4.75,11
+Padilla,34K77,NA,0.3apex,real,4.5,11
+Padilla,34K77,NA,0.3apex,real,4.5,11
+Padilla,34K77,NA,0.3apex,real,5,12
+Padilla,34K77,NA,0.3apex,real,5.25,12
+Padilla,34K77,NA,0.3apex,real,5.25,12
+Padilla,34K77,NA,0.3apex,real,5.25,12
+Padilla,34K77,NA,0.3apex,real,5,12
+Padilla,34K77,NA,0.3apex,real,4.75,12
+Padilla,34K77,NA,0.3apex,real,5.75,12
+Padilla,34K77,NA,0.3apex,real,5.5,12
+Padilla,34K77,NA,0.3apex,real,5.25,13
+Padilla,34K77,NA,0.3apex,real,7.25,14
+Padilla,34K77,NA,0.3apex,real,7.25,14
+Padilla,34K77,NA,0.3apex,real,7.25,15
+Padilla,34K77,NA,0.3apex,real,7.25,15
+Padilla,34K77,NA,0.3apex,real,7.25,15
+Padilla,34K77,NA,0.3apex,real,7.5,15
+Padilla,34K77,NA,0.3apex,real,7.5,15
+Padilla,34K77,NA,0.3apex,real,7.5,16
+Padilla,34K77,NA,0.3apex,real,7.25,16
+Padilla,34K77,NA,0.3apex,real,8.25,17
+Padilla,34K77,NA,0.3apex,real,9,18
+Padilla,34K77,NA,0.3apex,real,9.5,18
+Padilla,34N16,NA,0.3apex,real,3.5,7
+Padilla,34N16,NA,0.3apex,real,2,8
+Padilla,34N16,NA,0.3apex,real,2,8
+Padilla,34N16,NA,0.3apex,real,3,8
+Padilla,34N16,NA,0.3apex,real,3,8
+Padilla,34N16,NA,0.3apex,real,3,8
+Padilla,34N16,NA,0.3apex,real,3.75,8
+Padilla,34N16,NA,0.3apex,real,2.5,8
+Padilla,34N16,NA,0.3apex,real,3,8
+Padilla,34N16,NA,0.3apex,real,3,8
+Padilla,34N16,NA,0.3apex,real,3,8
+Padilla,34N16,NA,0.3apex,real,3.25,9
+Padilla,34N16,NA,0.3apex,real,5,10
+Padilla,34N16,NA,0.3apex,real,5,11
+Padilla,34N16,NA,0.3apex,real,5.25,11
+Padilla,34N16,NA,0.3apex,real,4.75,11
+Padilla,34N16,NA,0.3apex,real,4.75,11
+Padilla,34N16,NA,0.3apex,real,4.75,11
+Padilla,34N16,NA,0.3apex,real,6,12
+Padilla,34N16,NA,0.3apex,real,5.25,12
+Padilla,34N16,NA,0.3apex,real,4.75,12
+Padilla,34N16,NA,0.3apex,real,6,12
+Padilla,34N16,NA,0.3apex,real,5.5,12
+Padilla,34N16,NA,0.3apex,real,7.25,13
+Padilla,34N16,NA,0.3apex,real,7.25,14
+Padilla,34N16,NA,0.3apex,real,6.75,14
+Padilla,34N16,NA,0.3apex,real,7.25,14
+Padilla,34N16,NA,0.3apex,real,7.25,15
+Padilla,34N16,NA,0.3apex,real,7.25,15
+Padilla,34N16,NA,0.3apex,real,7.5,15
+Padilla,34N16,NA,0.3apex,real,7.25,15
+Padilla,34N16,NA,0.3apex,real,8.25,16
+Padilla,34N16,NA,0.3apex,real,8,16
+Padilla,34N16,NA,0.3apex,real,7.5,16
+Padilla,34N16,NA,0.3apex,real,8,16
+Padilla,34N16,NA,0.3apex,real,9,17
+Padilla,36G12,NA,0.3apex,real,3,8
+Padilla,36G12,NA,0.3apex,real,2,8
+Padilla,36G12,NA,0.3apex,real,3,8
+Padilla,36G12,NA,0.3apex,real,3,8
+Padilla,36G12,NA,0.3apex,real,3,8
+Padilla,36G12,NA,0.3apex,real,3.75,8
+Padilla,36G12,NA,0.3apex,real,3.5,8
+Padilla,36G12,NA,0.3apex,real,3,8
+Padilla,36G12,NA,0.3apex,real,3,8
+Padilla,36G12,NA,0.3apex,real,3,8
+Padilla,36G12,NA,0.3apex,real,3,8
+Padilla,36G12,NA,0.3apex,real,3,9
+Padilla,36G12,NA,0.3apex,real,4.25,10
+Padilla,36G12,NA,0.3apex,real,5.25,11
+Padilla,36G12,NA,0.3apex,real,5.25,11
+Padilla,36G12,NA,0.3apex,real,4.75,11
+Padilla,36G12,NA,0.3apex,real,4.25,11
+Padilla,36G12,NA,0.3apex,real,4.5,11
+Padilla,36G12,NA,0.3apex,real,4.5,11
+Padilla,36G12,NA,0.3apex,real,5.5,11
+Padilla,36G12,NA,0.3apex,real,5,11
+Padilla,36G12,NA,0.3apex,real,5.75,12
+Padilla,36G12,NA,0.3apex,real,5.25,12
+Padilla,36G12,NA,0.3apex,real,5.25,12
+Padilla,36G12,NA,0.3apex,real,7.5,14
+Padilla,36G12,NA,0.3apex,real,7.25,14
+Padilla,36G12,NA,0.3apex,real,7.25,14
+Padilla,36G12,NA,0.3apex,real,7,14
+Padilla,36G12,NA,0.3apex,real,6.75,14
+Padilla,36G12,NA,0.3apex,real,6.75,14
+Padilla,36G12,NA,0.3apex,real,6.75,14
+Padilla,36G12,NA,0.3apex,real,8.25,15
+Padilla,36G12,NA,0.3apex,real,7.25,15
+Padilla,36G12,NA,0.3apex,real,6.75,15
+Padilla,36G12,NA,0.3apex,real,8.25,16
+Padilla,36G12,NA,0.3apex,real,7.5,16
+Padilla,39A26,NA,0.3apex,real,3,8
+Padilla,39A26,NA,0.3apex,real,3,8
+Padilla,39A26,NA,0.3apex,real,3,8
+Padilla,39A26,NA,0.3apex,real,3,8
+Padilla,39A26,NA,0.3apex,real,4,8
+Padilla,39A26,NA,0.3apex,real,3.25,8
+Padilla,39A26,NA,0.3apex,real,3.25,8
+Padilla,39A26,NA,0.3apex,real,3.25,8
+Padilla,39A26,NA,0.3apex,real,3,8
+Padilla,39A26,NA,0.3apex,real,3,8
+Padilla,39A26,NA,0.3apex,real,3,8
+Padilla,39A26,NA,0.3apex,real,4,9
+Padilla,39A26,NA,0.3apex,real,3.25,9
+Padilla,39A26,NA,0.3apex,real,5,11
+Padilla,39A26,NA,0.3apex,real,5,11
+Padilla,39A26,NA,0.3apex,real,5,11
+Padilla,39A26,NA,0.3apex,real,5,11
+Padilla,39A26,NA,0.3apex,real,5.25,12
+Padilla,39A26,NA,0.3apex,real,5.25,12
+Padilla,39A26,NA,0.3apex,real,6,12
+Padilla,39A26,NA,0.3apex,real,5.25,12
+Padilla,39A26,NA,0.3apex,real,5.25,12
+Padilla,39A26,NA,0.3apex,real,5.25,12
+Padilla,39A26,NA,0.3apex,real,5,12
+Padilla,39A26,NA,0.3apex,real,5.75,12
+Padilla,39A26,NA,0.3apex,real,7.75,14
+Padilla,39A26,NA,0.3apex,real,7.5,15
+Padilla,39A26,NA,0.3apex,real,7.5,15
+Padilla,39A26,NA,0.3apex,real,7.5,15
+Padilla,39A26,NA,0.3apex,real,8,16
+Padilla,39A26,NA,0.3apex,real,8.25,16
+Padilla,39A26,NA,0.3apex,real,8,16
+Padilla,39A26,NA,0.3apex,real,8.25,16
+Padilla,39A26,NA,0.3apex,real,7.5,16
+Padilla,39A26,NA,0.3apex,real,8.75,17
+Padilla,39R52,NA,0.3apex,real,3,8
+Padilla,39R52,NA,0.3apex,real,3,8
+Padilla,39R52,NA,0.3apex,real,3,8
+Padilla,39R52,NA,0.3apex,real,3.25,8
+Padilla,39R52,NA,0.3apex,real,3.5,8
+Padilla,39R52,NA,0.3apex,real,3.25,8
+Padilla,39R52,NA,0.3apex,real,3.25,8
+Padilla,39R52,NA,0.3apex,real,3,8
+Padilla,39R52,NA,0.3apex,real,3.5,8
+Padilla,39R52,NA,0.3apex,real,3.25,9
+Padilla,39R52,NA,0.3apex,real,4,9
+Padilla,39R52,NA,0.3apex,real,5.25,11
+Padilla,39R52,NA,0.3apex,real,5,11
+Padilla,39R52,NA,0.3apex,real,5.25,12
+Padilla,39R52,NA,0.3apex,real,5,12
+Padilla,39R52,NA,0.3apex,real,5.5,12
+Padilla,39R52,NA,0.3apex,real,5.5,12
+Padilla,39R52,NA,0.3apex,real,6,12
+Padilla,39R52,NA,0.3apex,real,5.5,12
+Padilla,39R52,NA,0.3apex,real,6.25,13
+Padilla,39R52,NA,0.3apex,real,6.25,13
+Padilla,39R52,NA,0.3apex,real,6.25,13
+Padilla,39R52,NA,0.3apex,real,6.25,14
+Padilla,39R52,NA,0.3apex,real,8.25,16
+Padilla,39R52,NA,0.3apex,real,8.25,16
+Padilla,39R52,NA,0.3apex,real,8.25,16
+Padilla,39R52,NA,0.3apex,real,8,16
+Padilla,39R52,NA,0.3apex,real,8.25,16
+Padilla,39R52,NA,0.3apex,real,8.25,16
+Padilla,39R52,NA,0.3apex,real,8.25,16
+Padilla,39R52,NA,0.3apex,real,7.75,16
+Padilla,39R52,NA,0.3apex,real,7.75,16
+Padilla,39R52,NA,0.3apex,real,8,17
+Padilla,ANJOU258,NA,0.3apex,real,3,8
+Padilla,ANJOU258,NA,0.3apex,real,2,8
+Padilla,ANJOU258,NA,0.3apex,real,3,8
+Padilla,ANJOU258,NA,0.3apex,real,3,8
+Padilla,ANJOU258,NA,0.3apex,real,3.25,8
+Padilla,ANJOU258,NA,0.3apex,real,3,8
+Padilla,ANJOU258,NA,0.3apex,real,3,8
+Padilla,ANJOU258,NA,0.3apex,real,3,8
+Padilla,ANJOU258,NA,0.3apex,real,3.5,8
+Padilla,ANJOU258,NA,0.3apex,real,3,9
+Padilla,ANJOU258,NA,0.3apex,real,3.25,9
+Padilla,ANJOU258,NA,0.3apex,real,3.25,9
+Padilla,ANJOU258,NA,0.3apex,real,4.5,11
+Padilla,ANJOU258,NA,0.3apex,real,4.75,11
+Padilla,ANJOU258,NA,0.3apex,real,4.75,11
+Padilla,ANJOU258,NA,0.3apex,real,5.5,11
+Padilla,ANJOU258,NA,0.3apex,real,5,12
+Padilla,ANJOU258,NA,0.3apex,real,5.75,12
+Padilla,ANJOU258,NA,0.3apex,real,5,12
+Padilla,ANJOU258,NA,0.3apex,real,4.75,12
+Padilla,ANJOU258,NA,0.3apex,real,6,12
+Padilla,ANJOU258,NA,0.3apex,real,5.25,13
+Padilla,ANJOU258,NA,0.3apex,real,6,13
+Padilla,ANJOU258,NA,0.3apex,real,6,13
+Padilla,ANJOU258,NA,0.3apex,real,7.5,15
+Padilla,ANJOU258,NA,0.3apex,real,7.5,15
+Padilla,ANJOU258,NA,0.3apex,real,7,15
+Padilla,ANJOU258,NA,0.3apex,real,7.25,15
+Padilla,B73,NA,0.3apex,real,3.25,8
+Padilla,B73,NA,0.3apex,real,3.25,9
+Padilla,B73,NA,0.3apex,real,4.5,11
+Padilla,B73,NA,0.3apex,real,4.75,11
+Padilla,B73,NA,0.3apex,real,5.75,12
+Padilla,B73,NA,0.3apex,real,7.25,13
+Padilla,B73,NA,0.3apex,real,6.5,13
+Padilla,B73,NA,0.3apex,real,7,14
+Padilla,B73,NA,0.3apex,real,9.25,18
+Padilla,B73,NA,0.3apex,real,10.75,20
+Padilla,B73xMO17,NA,0.3apex,real,3.5,8
+Padilla,B73xMO17,NA,0.3apex,real,3,8
+Padilla,B73xMO17,NA,0.3apex,real,4.75,11
+Padilla,B73xMO17,NA,0.3apex,real,4.75,12
+Padilla,B73xMO17,NA,0.3apex,real,6.5,13
+Padilla,B73xMO17,NA,0.3apex,real,6.25,13
+Padilla,B73xMO17,NA,0.3apex,real,7.5,15
+Padilla,B73xMO17,NA,0.3apex,real,7.25,15
+Padilla,B73xMO17,NA,0.3apex,real,9,18
+Padilla,B73xMO17,NA,0.3apex,real,10.5,20
+Padilla,DK312,NA,0.3apex,real,3,8
+Padilla,DK312,NA,0.3apex,real,2,8
+Padilla,DK312,NA,0.3apex,real,3,8
+Padilla,DK312,NA,0.3apex,real,3,8
+Padilla,DK312,NA,0.3apex,real,3.25,8
+Padilla,DK312,NA,0.3apex,real,4,8
+Padilla,DK312,NA,0.3apex,real,3.5,8
+Padilla,DK312,NA,0.3apex,real,3.25,8
+Padilla,DK312,NA,0.3apex,real,3.25,8
+Padilla,DK312,NA,0.3apex,real,3.5,8
+Padilla,DK312,NA,0.3apex,real,3.5,8
+Padilla,DK312,NA,0.3apex,real,3.25,9
+Padilla,DK312,NA,0.3apex,real,5.25,11
+Padilla,DK312,NA,0.3apex,real,5.25,11
+Padilla,DK312,NA,0.3apex,real,4.75,11
+Padilla,DK312,NA,0.3apex,real,5,11
+Padilla,DK312,NA,0.3apex,real,5,11
+Padilla,DK312,NA,0.3apex,real,5.25,12
+Padilla,DK312,NA,0.3apex,real,5.25,12
+Padilla,DK312,NA,0.3apex,real,5,12
+Padilla,DK312,NA,0.3apex,real,5,12
+Padilla,DK312,NA,0.3apex,real,5.5,12
+Padilla,DK312,NA,0.3apex,real,6.25,13
+Padilla,DK312,NA,0.3apex,real,6.25,13
+Padilla,DK312,NA,0.3apex,real,8.25,15
+Padilla,DK312,NA,0.3apex,real,8.25,15
+Padilla,DK312,NA,0.3apex,real,8.25,16
+Padilla,DK312,NA,0.3apex,real,8,16
+Padilla,DK312,NA,0.3apex,real,8.25,16
+Padilla,DK312,NA,0.3apex,real,7.75,16
+Padilla,DK312,NA,0.3apex,real,7.75,16
+Padilla,DK312,NA,0.3apex,real,7.5,16
+Padilla,DK312,NA,0.3apex,real,7.5,16
+Padilla,DK312,NA,0.3apex,real,8.25,18
+Padilla,DK315,NA,0.3apex,real,2,8
+Padilla,DK315,NA,0.3apex,real,2,8
+Padilla,DK315,NA,0.3apex,real,3,8
+Padilla,DK315,NA,0.3apex,real,3,8
+Padilla,DK315,NA,0.3apex,real,3.25,8
+Padilla,DK315,NA,0.3apex,real,3,8
+Padilla,DK315,NA,0.3apex,real,3.5,8
+Padilla,DK315,NA,0.3apex,real,3,8
+Padilla,DK315,NA,0.3apex,real,3,8
+Padilla,DK315,NA,0.3apex,real,3,8
+Padilla,DK315,NA,0.3apex,real,3,8
+Padilla,DK315,NA,0.3apex,real,3.5,8
+Padilla,DK315,NA,0.3apex,real,5.25,11
+Padilla,DK315,NA,0.3apex,real,5,11
+Padilla,DK315,NA,0.3apex,real,4.75,11
+Padilla,DK315,NA,0.3apex,real,4.5,11
+Padilla,DK315,NA,0.3apex,real,5.75,12
+Padilla,DK315,NA,0.3apex,real,4.5,12
+Padilla,DK315,NA,0.3apex,real,5.5,12
+Padilla,DK315,NA,0.3apex,real,6.5,12
+Padilla,DK315,NA,0.3apex,real,5.25,13
+Padilla,DK315,NA,0.3apex,real,6,13
+Padilla,DK315,NA,0.3apex,real,6,13
+Padilla,DK315,NA,0.3apex,real,7.25,14
+Padilla,DK315,NA,0.3apex,real,7.5,15
+Padilla,DK315,NA,0.3apex,real,7.75,16
+Padilla,DK315,NA,0.3apex,real,9.25,16
+Padilla,DK315,NA,0.3apex,real,8,16
+Padilla,DK315,NA,0.3apex,real,8,16
+Padilla,DK315,NA,0.3apex,real,7.5,16
+Padilla,DK315,NA,0.3apex,real,8.25,17
+Padilla,DK315,NA,0.3apex,real,9.25,17
+Padilla,DK315,NA,0.3apex,real,8.25,17
+Padilla,DK315,NA,0.3apex,real,8.25,17
+Padilla,DK615,NA,0.3apex,real,2,8
+Padilla,DK615,NA,0.3apex,real,2,8
+Padilla,DK615,NA,0.3apex,real,3,8
+Padilla,DK615,NA,0.3apex,real,3.5,8
+Padilla,DK615,NA,0.3apex,real,3.25,8
+Padilla,DK615,NA,0.3apex,real,3,8
+Padilla,DK615,NA,0.3apex,real,3,8
+Padilla,DK615,NA,0.3apex,real,3.5,8
+Padilla,DK615,NA,0.3apex,real,3,8
+Padilla,DK615,NA,0.3apex,real,3,9
+Padilla,DK615,NA,0.3apex,real,3.25,9
+Padilla,DK615,NA,0.3apex,real,3.25,9
+Padilla,DK615,NA,0.3apex,real,5,11
+Padilla,DK615,NA,0.3apex,real,4.75,11
+Padilla,DK615,NA,0.3apex,real,4.75,11
+Padilla,DK615,NA,0.3apex,real,4.75,11
+Padilla,DK615,NA,0.3apex,real,4.75,11
+Padilla,DK615,NA,0.3apex,real,5.5,11
+Padilla,DK615,NA,0.3apex,real,5.25,12
+Padilla,DK615,NA,0.3apex,real,5.25,12
+Padilla,DK615,NA,0.3apex,real,5,12
+Padilla,DK615,NA,0.3apex,real,6.25,13
+Padilla,DK615,NA,0.3apex,real,6.25,13
+Padilla,DK615,NA,0.3apex,real,5.25,13
+Padilla,DK615,NA,0.3apex,real,7.25,14
+Padilla,DK615,NA,0.3apex,real,8,15
+Padilla,DK615,NA,0.3apex,real,7.25,15
+Padilla,DK615,NA,0.3apex,real,7.25,15
+Padilla,DK615,NA,0.3apex,real,7.5,15
+Padilla,DK615,NA,0.3apex,real,8.25,16
+Padilla,DK615,NA,0.3apex,real,8.25,16
+Padilla,DK615,NA,0.3apex,real,8,16
+Padilla,DK615,NA,0.3apex,real,7.5,16
+Padilla,DK615,NA,0.3apex,real,8.25,17
+Padilla,DK615,NA,0.3apex,real,8.75,17
+Padilla,DK615,NA,0.3apex,real,9.5,18
+Padilla,DK664MG,NA,0.3apex,real,2,8
+Padilla,DK664MG,NA,0.3apex,real,2,8
+Padilla,DK664MG,NA,0.3apex,real,3,8
+Padilla,DK664MG,NA,0.3apex,real,3.25,8
+Padilla,DK664MG,NA,0.3apex,real,3.25,8
+Padilla,DK664MG,NA,0.3apex,real,3.5,8
+Padilla,DK664MG,NA,0.3apex,real,3,8
+Padilla,DK664MG,NA,0.3apex,real,3,8
+Padilla,DK664MG,NA,0.3apex,real,3.5,8
+Padilla,DK664MG,NA,0.3apex,real,3,8
+Padilla,DK664MG,NA,0.3apex,real,3,9
+Padilla,DK664MG,NA,0.3apex,real,3.25,9
+Padilla,DK664MG,NA,0.3apex,real,5,11
+Padilla,DK664MG,NA,0.3apex,real,5,11
+Padilla,DK664MG,NA,0.3apex,real,4.5,11
+Padilla,DK664MG,NA,0.3apex,real,4.75,11
+Padilla,DK664MG,NA,0.3apex,real,4.75,11
+Padilla,DK664MG,NA,0.3apex,real,4.75,11
+Padilla,DK664MG,NA,0.3apex,real,5.5,11
+Padilla,DK664MG,NA,0.3apex,real,5.75,12
+Padilla,DK664MG,NA,0.3apex,real,5.25,12
+Padilla,DK664MG,NA,0.3apex,real,6,12
+Padilla,DK664MG,NA,0.3apex,real,5.25,12
+Padilla,DK664MG,NA,0.3apex,real,5.75,12
+Padilla,DK664MG,NA,0.3apex,real,7.25,14
+Padilla,DK664MG,NA,0.3apex,real,8.25,15
+Padilla,DK664MG,NA,0.3apex,real,7.5,15
+Padilla,DK664MG,NA,0.3apex,real,7.5,15
+Padilla,DK664MG,NA,0.3apex,real,7.5,15
+Padilla,DK664MG,NA,0.3apex,real,8,16
+Padilla,DK664MG,NA,0.3apex,real,8,16
+Padilla,DK664MG,NA,0.3apex,real,8,16
+Padilla,DK664MG,NA,0.3apex,real,7.5,16
+Padilla,DK664MG,NA,0.3apex,real,8.25,17
+Padilla,DK664MG,NA,0.3apex,real,8,17
+Padilla,DK664MG,NA,0.3apex,real,9,18
+Padilla,DK682,NA,0.3apex,real,3,7
+Padilla,DK682,NA,0.3apex,real,3,8
+Padilla,DK682,NA,0.3apex,real,2,8
+Padilla,DK682,NA,0.3apex,real,3,8
+Padilla,DK682,NA,0.3apex,real,3,8
+Padilla,DK682,NA,0.3apex,real,3,8
+Padilla,DK682,NA,0.3apex,real,3,8
+Padilla,DK682,NA,0.3apex,real,2.75,8
+Padilla,DK682,NA,0.3apex,real,3.25,8
+Padilla,DK682,NA,0.3apex,real,3.25,8
+Padilla,DK682,NA,0.3apex,real,2.5,8
+Padilla,DK682,NA,0.3apex,real,3.25,9
+Padilla,DK682,NA,0.3apex,real,5,11
+Padilla,DK682,NA,0.3apex,real,5,11
+Padilla,DK682,NA,0.3apex,real,5.25,11
+Padilla,DK682,NA,0.3apex,real,4.5,11
+Padilla,DK682,NA,0.3apex,real,4.75,11
+Padilla,DK682,NA,0.3apex,real,5,11
+Padilla,DK682,NA,0.3apex,real,4.75,11
+Padilla,DK682,NA,0.3apex,real,5.75,12
+Padilla,DK682,NA,0.3apex,real,5.25,12
+Padilla,DK682,NA,0.3apex,real,5.5,12
+Padilla,DK682,NA,0.3apex,real,5,12
+Padilla,DK682,NA,0.3apex,real,7.25,13
+Padilla,DK682,NA,0.3apex,real,6.25,14
+Padilla,DK682,NA,0.3apex,real,7.25,14
+Padilla,DK682,NA,0.3apex,real,7.5,15
+Padilla,DK682,NA,0.3apex,real,7.25,15
+Padilla,DK682,NA,0.3apex,real,8.25,16
+Padilla,DK682,NA,0.3apex,real,8,16
+Padilla,DK682,NA,0.3apex,real,8.25,16
+Padilla,DK682,NA,0.3apex,real,7.75,16
+Padilla,DK682,NA,0.3apex,real,8,16
+Padilla,DK682,NA,0.3apex,real,7.5,16
+Padilla,DK682,NA,0.3apex,real,8.5,16
+Padilla,DK682,NA,0.3apex,real,8.75,17
+Padilla,DK752,NA,0.3apex,real,3,8
+Padilla,DK752,NA,0.3apex,real,2,8
+Padilla,DK752,NA,0.3apex,real,3.25,8
+Padilla,DK752,NA,0.3apex,real,3.25,8
+Padilla,DK752,NA,0.3apex,real,3.5,8
+Padilla,DK752,NA,0.3apex,real,3.25,8
+Padilla,DK752,NA,0.3apex,real,3.25,8
+Padilla,DK752,NA,0.3apex,real,3.75,8
+Padilla,DK752,NA,0.3apex,real,3.5,8
+Padilla,DK752,NA,0.3apex,real,3,9
+Padilla,DK752,NA,0.3apex,real,3,9
+Padilla,DK752,NA,0.3apex,real,3.25,9
+Padilla,DK752,NA,0.3apex,real,5,11
+Padilla,DK752,NA,0.3apex,real,4.75,11
+Padilla,DK752,NA,0.3apex,real,4.75,11
+Padilla,DK752,NA,0.3apex,real,5,11
+Padilla,DK752,NA,0.3apex,real,4.75,11
+Padilla,DK752,NA,0.3apex,real,5.5,11
+Padilla,DK752,NA,0.3apex,real,5.25,12
+Padilla,DK752,NA,0.3apex,real,5.25,12
+Padilla,DK752,NA,0.3apex,real,5,12
+Padilla,DK752,NA,0.3apex,real,5.25,12
+Padilla,DK752,NA,0.3apex,real,5.5,12
+Padilla,DK752,NA,0.3apex,real,6,13
+Padilla,DK752,NA,0.3apex,real,7.25,14
+Padilla,DK752,NA,0.3apex,real,7.5,15
+Padilla,DK752,NA,0.3apex,real,7.5,15
+Padilla,DK752,NA,0.3apex,real,7.5,15
+Padilla,DK752,NA,0.3apex,real,8.25,16
+Padilla,DK752,NA,0.3apex,real,8.25,16
+Padilla,DK752,NA,0.3apex,real,8.25,16
+Padilla,DK752,NA,0.3apex,real,8.25,16
+Padilla,DK752,NA,0.3apex,real,7.5,16
+Padilla,DK752,NA,0.3apex,real,8,17
+Padilla,DK752,NA,0.3apex,real,9,18
+Padilla,DK752,NA,0.3apex,real,9.5,18
+Padilla,DK834,NA,0.3apex,real,3,8
+Padilla,DK834,NA,0.3apex,real,2,8
+Padilla,DK834,NA,0.3apex,real,3,8
+Padilla,DK834,NA,0.3apex,real,3,8
+Padilla,DK834,NA,0.3apex,real,3,8
+Padilla,DK834,NA,0.3apex,real,3.5,8
+Padilla,DK834,NA,0.3apex,real,2.5,8
+Padilla,DK834,NA,0.3apex,real,3.25,8
+Padilla,DK834,NA,0.3apex,real,3.25,8
+Padilla,DK834,NA,0.3apex,real,3,8
+Padilla,DK834,NA,0.3apex,real,3.5,8
+Padilla,DK834,NA,0.3apex,real,3.25,9
+Padilla,DK834,NA,0.3apex,real,4.25,10
+Padilla,DK834,NA,0.3apex,real,4.75,11
+Padilla,DK834,NA,0.3apex,real,5.25,11
+Padilla,DK834,NA,0.3apex,real,4.25,11
+Padilla,DK834,NA,0.3apex,real,4.75,11
+Padilla,DK834,NA,0.3apex,real,4.75,11
+Padilla,DK834,NA,0.3apex,real,5.25,12
+Padilla,DK834,NA,0.3apex,real,5.5,12
+Padilla,DK834,NA,0.3apex,real,5.5,12
+Padilla,DK834,NA,0.3apex,real,6.75,13
+Padilla,DK834,NA,0.3apex,real,6,13
+Padilla,DK834,NA,0.3apex,real,5.25,13
+Padilla,DK834,NA,0.3apex,real,8,15
+Padilla,DK834,NA,0.3apex,real,8,15
+Padilla,DK834,NA,0.3apex,real,8,15
+Padilla,DK834,NA,0.3apex,real,7.25,15
+Padilla,DK834,NA,0.3apex,real,7.25,15
+Padilla,DK834,NA,0.3apex,real,7.5,15
+Padilla,DK834,NA,0.3apex,real,8,16
+Padilla,DK834,NA,0.3apex,real,7.5,16
+Padilla,DK834,NA,0.3apex,real,8.25,17
+Padilla,DK834,NA,0.3apex,real,8.25,17
+Padilla,DK834,NA,0.3apex,real,8.5,17
+Padilla,DK834,NA,0.3apex,real,9,17
+Padilla,MO17,NA,0.3apex,real,3.75,8
+Padilla,MO17,NA,0.3apex,real,3,9
+Padilla,MO17,NA,0.3apex,real,4.5,11
+Padilla,MO17,NA,0.3apex,real,4.75,12
+Padilla,MO17,NA,0.3apex,real,6,13
+Padilla,MO17,NA,0.3apex,real,6.5,13
+Padilla,MO17,NA,0.3apex,real,7.5,14
+Padilla,MO17,NA,0.3apex,real,7.25,15
+Padilla,MO17,NA,0.3apex,real,8.75,18
+Padilla,MO17,NA,0.3apex,real,10.5,19
+Padilla,Monumental,NA,0.3apex,real,3,8
+Padilla,Monumental,NA,0.3apex,real,2,8
+Padilla,Monumental,NA,0.3apex,real,3,8
+Padilla,Monumental,NA,0.3apex,real,3,8
+Padilla,Monumental,NA,0.3apex,real,3.5,8
+Padilla,Monumental,NA,0.3apex,real,2.75,8
+Padilla,Monumental,NA,0.3apex,real,3,8
+Padilla,Monumental,NA,0.3apex,real,3,8
+Padilla,Monumental,NA,0.3apex,real,3,8
+Padilla,Monumental,NA,0.3apex,real,3,8
+Padilla,Monumental,NA,0.3apex,real,3.25,9
+Padilla,Monumental,NA,0.3apex,real,3.25,9
+Padilla,Monumental,NA,0.3apex,real,5,11
+Padilla,Monumental,NA,0.3apex,real,5.25,11
+Padilla,Monumental,NA,0.3apex,real,4.5,11
+Padilla,Monumental,NA,0.3apex,real,4.75,11
+Padilla,Monumental,NA,0.3apex,real,5.25,12
+Padilla,Monumental,NA,0.3apex,real,5.75,12
+Padilla,Monumental,NA,0.3apex,real,5.25,12
+Padilla,Monumental,NA,0.3apex,real,5.25,12
+Padilla,Monumental,NA,0.3apex,real,4.75,12
+Padilla,Monumental,NA,0.3apex,real,4.75,12
+Padilla,Monumental,NA,0.3apex,real,4.75,12
+Padilla,Monumental,NA,0.3apex,real,5.5,12
+Padilla,Monumental,NA,0.3apex,real,7.75,14
+Padilla,Monumental,NA,0.3apex,real,8.25,15
+Padilla,Monumental,NA,0.3apex,real,7.5,15
+Padilla,Monumental,NA,0.3apex,real,7.5,15
+Padilla,Monumental,NA,0.3apex,real,8.5,15
+Padilla,Monumental,NA,0.3apex,real,8,16
+Padilla,Monumental,NA,0.3apex,real,8,16
+Padilla,Monumental,NA,0.3apex,real,8.25,16
+Padilla,Monumental,NA,0.3apex,real,7.75,16
+Padilla,Monumental,NA,0.3apex,real,7.5,16
+Padilla,Monumental,NA,0.3apex,real,8,16
+Padilla,Monumental,NA,0.3apex,real,8.25,17
+Thiagarajah,A498 x CG10,NA,naked eye visible at apex,digitized,4.03,4.035902217
+Thiagarajah,A498 x CG10,NA,naked eye visible at apex,digitized,2.91,4.120112562
+Thiagarajah,A498 x CG10,NA,naked eye visible at apex,digitized,4.85,4.904754009
+Thiagarajah,A498 x CG10,NA,naked eye visible at apex,digitized,4.05,5.196123211
+Thiagarajah,A498 x CG10,NA,naked eye visible at apex,digitized,5.69,5.939328194
+Thiagarajah,A498 x CG10,NA,naked eye visible at apex,digitized,4.63,6.169199677
+Thiagarajah,A498 x CG10,NA,naked eye visible at apex,digitized,6.53,6.994597148
+Thiagarajah,A498 x CG10,NA,naked eye visible at apex,digitized,5.81,7.141572239
+Thiagarajah,A498 x CG10,NA,naked eye visible at apex,digitized,7.43,7.884049855
+Thiagarajah,A498 x CG10,NA,naked eye visible at apex,digitized,6.97,8.134686497
+Thiagarajah,A498 x CG10,NA,naked eye visible at apex,digitized,8.23,8.939389199
+Thiagarajah,A498 x CG10,NA,naked eye visible at apex,digitized,8.13,9.210673683
+Thiagarajah,A498 x CG10,NA,naked eye visible at apex,digitized,9.08,9.994658153
+Thiagarajah,A498 x CG10,NA,naked eye visible at apex,digitized,9.37,10.07938469
+Thiagarajah,A498 x CG10,NA,naked eye visible at apex,digitized,9.93,11.00849064
+Thiagarajah,A498 x CG10,NA,naked eye visible at apex,digitized,10.48,11.11400581
+Thiagarajah,A498 x CG10,NA,naked eye visible at apex,digitized,9.96,12.02363709
+Thiagarajah,A498 x CG10,NA,naked eye visible at apex,digitized,10.44,12.06709141
+Thiagarajah,A498 x CG10,NA,naked eye visible at apex,digitized,10.82,12.99600965
+Thiagarajah,A498 x CG10,NA,naked eye visible at apex,digitized,11.64,13.12231343
+Thiagarajah,A498 x CG10,NA,naked eye visible at apex,digitized,10.85,13.92828316
+Thiagarajah,A498 x CG10,NA,naked eye visible at apex,digitized,12.26,14.15749767
+Thiagarajah,A498 x CG10,NA,naked eye visible at apex,digitized,11.67,14.85928965
+Thiagarajah,A498 x CG10,NA,naked eye visible at apex,digitized,12.26,15.13125458
+Tollenaar,Guelph GX122,NA,NA,digitized,6.69,1.34E+01
+Tollenaar,Guelph GX122,NA,NA,digitized,6.32,1.35E+01
+Tollenaar,Guelph GX122,NA,NA,digitized,6.77,1.36E+01
+Tollenaar,Guelph GX122,NA,NA,digitized,6.9,1.38E+01
+Tollenaar,Guelph GX122,NA,NA,digitized,7,1.39E+01
+Tollenaar,Guelph GX122,NA,NA,digitized,7.31,1.42E+01
+Tollenaar,Guelph GX122,NA,NA,digitized,7.42,1.43E+01
+Tollenaar,Guelph GX122,NA,NA,digitized,7.52,1.52E+01
+Tollenaar,Guelph GX122,NA,NA,digitized,7.69,1.52E+01
+Tollenaar,Guelph GX122,NA,NA,digitized,7.79,1.57E+01
+Tollenaar,Guelph GX122,NA,NA,digitized,8.06,1.57E+01
+Tollenaar,Guelph GX122,NA,NA,digitized,8,1.60E+01
+Tollenaar,Guelph GX122,NA,NA,digitized,8.23,1.61E+01
+Tollenaar,Guelph GX122,NA,NA,digitized,8.31,1.66E+01
+Tollenaar,Guelph GX122,NA,NA,digitized,8.46,1.70E+01
+Tollenaar,Guelph GX122,NA,NA,digitized,8.64,1.72E+01
+Vidal,M40,NA,25um,digitized,2.37,6.112157615
+Vidal,M40,NA,25um,digitized,2.65,6.960168164
+Vidal,M40,NA,25um,digitized,2.99,7.954422858
+Vidal,M40,NA,25um,digitized,3.33,9.007072463
+Vidal,M40,NA,25um,digitized,4.01,10.03206583
+Vidal,M40,NA,25um,digitized,4.88,10.97036587
+Vidal,M40,NA,25um,digitized,5.93,11.99702888
+Vidal,M40,NA,25um,digitized,6.75,13.05186187
+Vidal,M40,NA,25um,digitized,7.65,14.04868526
+Vidal,M40,NA,25um,digitized,8.39,15.01554058
+Vidal,M40,NA,25um,digitized,9.26,16.04143299
+Vidal,M40,NA,25um,digitized,9.72,17.03620142
+Vidal,M40,NA,25um,digitized,10.51,18.03251107
+Vidal,M52,NA,25um,digitized,2.04,5.979073244
+Vidal,M52,NA,25um,digitized,2.55,6.935724963
+Vidal,M52,NA,25um,digitized,2.86,7.922272048
+Vidal,M52,NA,25um,digitized,3.11,8.998505232
+Vidal,M52,NA,25um,digitized,3.76,10.01494768
+Vidal,M52,NA,25um,digitized,4.74,10.9715994
+Vidal,M52,NA,25um,digitized,5.67,12.07772795
+Vidal,M52,NA,25um,digitized,6.37,13.03437967
+Vidal,M52,NA,25um,digitized,7.29,13.99103139
+Vidal,M52,NA,25um,digitized,7.94,15.03736921
+Vidal,M52,NA,25um,digitized,8.47,15.96412556
+Vidal,M52,NA,25um,digitized,9.2,17.04035874
+Vidal,M52,NA,25um,digitized,10.05,17.99701046
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,0.11,5.893606054
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,0.11,6.098209645
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,0.47,6.875703291
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,0.56,6.957544727
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,1.13,6.957544727
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,0.55,6.957544727
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,0.11,6.998465445
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,0.52,7.039386163
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,0.56,7.162148318
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,0.94,7.939641963
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,0.85,7.939641963
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,1.14,7.939641963
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,0.52,7.980562682
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,0.85,8.0214834
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,0.94,8.062404118
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,0.85,8.144245554
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,1.16,8.144245554
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,1.38,8.880818481
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,1.6,8.880818481
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,0.91,8.962659918
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,1.38,9.085422072
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,1.59,9.085422072
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,1.88,9.781074281
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,1.77,9.985677872
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,1.59,9.985677872
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,1.35,10.02659859
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,1.88,10.10844003
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,1.8,10.88593367
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,2.16,10.92685439
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,1.77,11.13145798
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,2.24,11.78618947
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,2.17,11.82711019
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,1.87,11.99079306
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,2.16,12.03171378
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,2.63,12.03171378
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,2.17,12.11355522
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,2.62,12.72736599
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,3.21,12.89104886
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,2.89,12.9728903
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,2.62,13.09565245
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,3.2,13.17749389
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,3.02,13.66854251
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,2.91,13.83222538
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,3,13.8731461
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,3.51,13.91406682
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,3,14.03682897
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,3.2,14.03682897
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,2.91,14.07774969
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,3.51,14.15959113
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,3.86,14.81432262
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,3.86,15.10076764
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,3.89,16.04194416
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,4.72,16.90127924
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,4.72,17.14680355
+Warrington,DeKalbXL45,NA,ridge apical dome,digitized,4.72,17.88337648
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,-0.72,6.025099397
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,0.15,6.971025311
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,0.46,7.020737047
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,-0.35,7.022854692
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,0.44,7.915998285
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,1,7.99157177
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,0.02,8.020609988
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,1.86,8.98816236
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,0.56,9.044332915
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,0.9,9.501770881
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,1.49,9.966514726
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,1.77,10.93851415
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,2.17,10.95992885
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,1.3,10.9857906
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,2.44,11.93626945
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,1.81,11.98269883
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,2.39,12.52661616
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,3.07,12.90710417
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,3.39,13.90602417
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,3.05,13.97513884
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,4.02,14.90388535
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,3.79,14.97067061
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,3.5,14.98168236
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,4.68,15.87461419
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,3.41,15.97297884
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,5.31,16.41302564
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,4.64,16.49071677
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,5.57,16.90577535
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,4.67,16.91128123
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,6,16.92419887
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,4.32,16.96745178
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,5.47,17.43336033
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,6.03,17.87597478
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,6.95,17.92100122
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,5.05,17.9359571
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,6.04,17.99869235
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,6.81,18.46579208
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,7.36,18.92195946
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,7.36,18.93943004
+Zur,PioneerHybrid3377,NA,"ridge apical dome, microscope'",digitized,8.04,19.97186178
